@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cálculo</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Cálculo</h1>
+
+    <input id="a" placeholder="Número A">
+    <input id="b" placeholder="Número B">
+
+    <button onclick="sumar()">Sumar</button>
+
+    <p id="resultado"></p>
+
+    <a href="/">Volver al menú</a>
+</div>
+
+<script>
+async function sumar() {
+    const a = document.getElementById("a").value;
+    const b = document.getElementById("b").value;
+
+    const res = await fetch(`/api/sumar?a=${a}&b=${b}`);
+    const data = await res.json();
+
+    document.getElementById("resultado").innerText = data.resultado;
+}
+</script>
+
+</body>
+</html>

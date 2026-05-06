@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Hora</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Hora actual</h1>
+
+    <p id="hora"></p>
+
+    <button type="button" id="btnHora" onclick="toggleHora()">
+        Mostrar hora
+    </button>
+
+    <br><br>
+
+    <a href="/">Volver al menú</a>
+</div>
+
+<script>
+let visible = false;
+
+function toggleHora() {
+    const horaElement = document.getElementById("hora");
+    const boton = document.getElementById("btnHora");
+
+    if (!visible) {
+        horaElement.innerText = new Date().toLocaleTimeString();
+        boton.innerText = "Ocultar hora";
+        visible = true;
+    } else {
+        horaElement.innerText = "";
+        boton.innerText = "Mostrar hora";
+        visible = false;
+    }
+}
+</script>
+
+</body>
+</html>

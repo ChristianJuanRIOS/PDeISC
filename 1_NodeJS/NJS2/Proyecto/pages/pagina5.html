@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Estadísticas</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Estadísticas</h1>
+
+    <input id="a" placeholder="Número A">
+    <input id="b" placeholder="Número B">
+    <input id="c" placeholder="Número C">
+
+    <button onclick="calcular()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <a href="/">Volver al menú</a>
+</div>
+
+<script>
+async function calcular() {
+    const a = document.getElementById("a").value;
+    const b = document.getElementById("b").value;
+    const c = document.getElementById("c").value;
+
+    const res = await fetch(`/api/estadisticas?a=${a}&b=${b}&c=${c}`);
+    const data = await res.json();
+
+    document.getElementById("resultado").innerText =
+        "Promedio: " + data.promedio +
+        " | Mayor: " + data.mayor +
+        " | Menor: " + data.menor;
+}
+</script>
+
+</body>
+</html>

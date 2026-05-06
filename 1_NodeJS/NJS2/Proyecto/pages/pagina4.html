@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Operaciones</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Operaciones</h1>
+
+    <input id="a" placeholder="Número A">
+    <input id="b" placeholder="Número B">
+
+    <button onclick="operar()">Calcular</button>
+
+    <p id="resultado"></p>
+
+    <a href="/">Volver al menú</a>
+</div>
+
+<script>
+async function operar() {
+    const a = document.getElementById("a").value;
+    const b = document.getElementById("b").value;
+
+    const res = await fetch(`/api/operaciones?a=${a}&b=${b}`);
+    const data = await res.json();
+
+    document.getElementById("resultado").innerText =
+        "Multiplicación: " + data.multiplicar +
+        " | División: " + data.dividir;
+}
+</script>
+
+</body>
+</html>

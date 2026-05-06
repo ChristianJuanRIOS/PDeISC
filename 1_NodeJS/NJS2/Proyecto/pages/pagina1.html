@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Clima</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+
+<div class="container">
+
+
+    <h1>Clima</h1>
+
+
+    <input id="ciudad" placeholder="Escribí una ciudad">
+
+
+    <!-- Botón para consultar API -->
+    <button type="button" onclick="consultarClima()">
+        Consultar clima
+    </button>
+
+
+    <p id="resultado"></p>
+
+
+    <a href="/">Volver al menú</a>
+
+</div>
+
+<script>
+// Llama a la API del servidor para obtener el clima
+async function consultarClima() {
+
+
+    const ciudad = document.getElementById("ciudad").value;
+
+
+    // Consulta al backend
+    const res = await fetch("/api/clima?ciudad=" + ciudad);
+    const data = await res.json();
+
+
+    // Muestra resultado en pantalla
+    document.getElementById("resultado").innerText = data.clima;
+}
+</script>
+
+
+</body>
+</html>
