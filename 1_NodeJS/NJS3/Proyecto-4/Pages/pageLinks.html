@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enlaces dinámicos</title>
+  <link rel="stylesheet" href="/Styles/style.css">
+</head>
+<body>
+
+
+  <h1>Generador de enlaces</h1>
+
+
+  <!-- Botonera de controles: ids usados por pageLinks.js para escuchar clicks -->
+  <div class="container">
+    <button id="crear">Crear enlaces</button>
+    <button id="modificar">Modificar enlaces</button>
+  </div>
+
+  
+  <!-- Zona de inyección: pageLinks.js inserta los enlaces generados aquí -->
+  <div id="contenedor"></div>
+
+
+  <!-- Zona de feedback: pageLinks.js escribe aquí mensajes de estado -->
+  <div id="mensaje"></div>
+
+
+  <!-- Botón global de navegación: home.js lo usa para volver al menú principal -->
+  <button class="btn-volver" id="btn-home">Volver al menú</button>
+
+
+  <!-- Dos scripts separados: pageLinks.js maneja la lógica, home.js la navegación -->
+  <script src="/Scripts/pageLinks.js"></script>
+  <script src="/Scripts/home.js"></script>
+
+  
+</body>
+</html>

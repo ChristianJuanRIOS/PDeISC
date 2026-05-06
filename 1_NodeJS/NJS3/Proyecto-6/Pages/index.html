@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>Registro</title>
+
+
+  <link rel="stylesheet" href="/Styles/style.css">
+</head>
+
+
+<body>
+
+
+  <h1>Formulario de Registro</h1>
+
+
+  <!-- El id "formulario" es usado por client.js para capturar el submit y leer los campos -->
+  <form id="formulario">
+
+
+    <!-- Campos básicos: el atributo "name" es la clave con la que FormData los lee en JS -->
+    <input type="text"   name="nombre" placeholder="Nombre" required>
+    <input type="number" name="edad"   placeholder="Edad" min="0" max="120" step="1" required>
+    <input type="email"  name="email"  placeholder="Email" required>
+
+
+    <label>Género:</label>
+    <div>
+      <!-- Radio buttons con mismo "name" se comportan como grupo: solo uno seleccionable -->
+      <label><input type="radio" name="genero" value="Masculino"> Masculino</label>
+      <label><input type="radio" name="genero" value="Femenino"> Femenino</label>
+    </div>
+
+
+    <select name="pais">
+      <option value="Argentina">Argentina</option>
+      <option value="Chile">Chile</option>
+      <option value="Uruguay">Uruguay</option>
+    </select>
+
+
+    <label>Pasatiempo favorito:</label>
+    <div>
+      <label><input type="radio" name="hobby" value="Fútbol"> Fútbol</label>
+      <label><input type="radio" name="hobby" value="Música"> Música</label>
+      <label><input type="radio" name="hobby" value="Videojuegos"> Videojuegos</label>
+      <!-- Al seleccionar "Otro", client.js inserta dinámicamente un input de texto aquí -->
+      <label><input type="radio" name="hobby" value="Otro"> Otro</label>
+    </div>
+
+    
+    <button type="submit">Enviar</button>
+
+
+  </form>
+
+
+  <!-- Contenedor vacío: client.js lo rellena con la respuesta del servidor tras el submit -->
+  <div id="resultado"></div>
+
+
+  <script src="/Scripts/client.js"></script>
+
+
+</body>
+</html>

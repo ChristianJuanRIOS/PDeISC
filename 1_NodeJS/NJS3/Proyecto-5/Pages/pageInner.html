@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InnerHTML</title>
+  <link rel="stylesheet" href="/Styles/style.css">
+</head>
+<body>
+
+
+  <h1>Agregar elementos con innerHTML</h1>
+
+
+  <!-- Botonera de controles: cada id es usado por pageInner.js para escuchar clicks -->
+  <div class="container">
+    <button id="btn-texto">Agregar texto</button>
+    <button id="btn-img">Agregar imagen</button>
+    <button id="btn-link">Agregar enlace</button>
+    <button id="btn-lista">Agregar lista</button>
+    <button id="btn-card">Agregar tarjeta</button>
+    <button id="btn-clear">Limpiar</button>
+  </div>
+
+
+  <!-- Zona de inyección: pageInner.js escribe aquí con innerHTML al hacer click -->
+  <div id="contenedor"></div>
+
+
+  <script src="/Scripts/pageInner.js"></script>
+
+
+</body>
+</html>
