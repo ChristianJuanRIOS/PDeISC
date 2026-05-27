@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuarios</title>
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  </head>
+
+
+  <body>
+
+
+    <button id="toggleDark"><i class="fa-solid fa-moon"></i></button>
+
+
+    <div class="container">
+
+
+      <h1>Registro de Usuarios</h1>
+
+
+      <a href="/" class="volver">
+        <button>Volver al menú</button>
+      </a>
+
+
+      <form id="formUsuario">
+
+
+        <input type="text" id="nombre" placeholder="Nombre">
+        <input type="email" name="mail" placeholder="Mail">
+
+
+        <!-- Bloquea e, E, + y - porque no tienen sentido en una edad -->
+        <input
+          type="number"
+          name="edad"
+          min="1"
+          onkeydown="return !['e','E','+','-'].includes(event.key)"
+          placeholder="Edad"
+        >
+
+
+        <button type="submit">Guardar</button>
+
+
+      </form>
+
+
+      <!-- Acá aparecen los mensajes de éxito o error tras intentar guardar -->
+      <div id="mensaje"></div>
+
+
+      <!-- Las tarjetas de usuarios se generan dinámicamente desde usuarios.js -->
+      <div id="listaUsuarios"></div>
+
+
+    </div>
+
+
+    <script src="/Scripts/DarkMode.js"></script>
+    <script type="module" src="/Scripts/usuarios.js"></script>
+
+
+  </body>
+</html>

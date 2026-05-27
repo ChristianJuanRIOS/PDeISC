@@ -1,0 +1,15 @@
+/* Cuando el JS agrega la clase "dark" al body, estas variables sobreescriben
+   las del :root y toda la página cambia de tema automáticamente */
+body.dark {
+    --fondo: #121212;
+    --texto: #f1f1f1;
+    --card: #1e1e1e;
+    --borde: #333;
+    --input: #2a2a2a;
+    --boton: #3b82f6;
+    --botonHover: #2563eb;
+
+    
+    /* La sombra es más opaca porque sobre fondos oscuros necesita más contraste */
+    --shadow: 0 2px 8px rgba(0,0,0,0.4);
+}

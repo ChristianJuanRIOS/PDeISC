@@ -1,0 +1,41 @@
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    
+    }
+
+    form {
+        grid-template-columns: 1fr;
+    }
+
+
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+
+    .menu a {
+        width: 100%;
+    }
+
+
+    .menu a button {
+        width: 100%;
+    }
+
+
+    #listaUsuarios,
+    #listaProductos,
+    #lista {
+        grid-template-columns: 1fr;
+    }
+
+
+    #toggleDark {
+        top: auto;
+        bottom: 15px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
