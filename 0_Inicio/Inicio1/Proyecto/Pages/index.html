@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Noticias 2026</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+
+<body>
+
+
+    <div id="visor" class="visor">
+    <img id="visorImg" alt="Imagen ampliada">
+    </div>
+    
+    <header class="site-header">
+    <h1><i class="fa-solid fa-newspaper"></i> DIARIO DIGITAL 2026</h1>
+    <p id="fecha"></p>
+  </header>
+
+
+  <!-- NAVBAR -->
+  <nav class="site-nav">
+    <div class="nav-inner">
+      <button
+        id="navToggle"
+        class="nav-toggler"
+        type="button"
+        aria-label="Abrir/cerrar menú"
+        aria-controls="menu"
+        aria-expanded="false"
+      >
+        <span class="nav-toggler-icon"></span>
+      </button>
+
+      <div class="nav-collapse" id="menu">
+        <ul class="nav-links">
+          <li><a class="nav-link" href="#" onclick="filtrar('todas'); return false;"><i class="fa-solid fa-house"></i> Inicio</a></li>
+          <li><a class="nav-link" href="#" onclick="filtrar('tecnologia'); return false;"><i class="fa-solid fa-microchip"></i> Tecnología</a></li>
+          <li><a class="nav-link" href="#" onclick="filtrar('deportes'); return false;"><i class="fa-solid fa-trophy"></i> Deportes</a></li>
+          <li><a class="nav-link" href="#" onclick="filtrar('mundo'); return false;"><i class="fa-solid fa-globe"></i> Mundo</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="noticias" class="content">
+    <!-- Contenido inyectado por noticias.html -->
+  </main>
+
+  <footer class="site-footer text-center">
+    <p><i class="fa-solid fa-newspaper"></i> © 2026 Diario Digital — Todos los derechos reservados</p>
+  </footer>
+
+  <!-- Botón flotante modo oscuro -->
+  <button
+    id="btnOscuro"
+    onclick="modoOscuro()"
+    title="Alternar modo oscuro"
+    class="btn-dark-toggle"
+  >
+    <i class="fa-solid fa-moon" id="iconoOscuro"></i>
+  </button>
+
+
+  <!-- Noticias: debe ir antes que diario.js -->
+  <script src="../scripts/noticias.js"></script>
+  <script src="../scripts/diario.js"></script>
+  <script src="../scripts/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* ===== BASE ===== */
+body {
+    font-family: 'Georgia', serif;
+    margin: 0;
+    padding-top: 70px; /* espacio para navbar fija */
+    background: #f0f2f5;
+    color: #1a1a2e;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+/* ===== MODO OSCURO - BASE ===== */
+body.oscuro {
+    background: #0d0d1a;
+    color: #e2e8f0;
+}

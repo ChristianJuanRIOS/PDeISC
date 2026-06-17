@@ -1,0 +1,13 @@
+body {
+  font-family: Georgia, serif;
+  margin: 0;
+  background: #f6f7fb;
+  color: #0f172a;
+  padding-top: 70px; /* espacio para el menú fijo */
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+body.oscuro {
+  background: #070a12;
+  color: #e2e8f0;
+}
