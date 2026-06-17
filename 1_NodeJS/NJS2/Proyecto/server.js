@@ -13,8 +13,11 @@ const servidor = http.createServer((req, res) => {
     // =========================
     // 🎨 CSS (Styles folder)
     // =========================
-    if (req.url.endsWith('.css')) {
-        const cssPath = path.join(__dirname, 'Styles', req.url);
+    if (req.url.startsWith('/Styles/')) {
+        const cssFile = path.basename(req.url);
+        const cssPath = path.join(__dirname, 'Styles', cssFile);
+
+        console.log("Buscando CSS en:", cssPath);
 
         fs.readFile(cssPath, (err, data) => {
             if (err) {
@@ -23,6 +26,50 @@ const servidor = http.createServer((req, res) => {
             }
 
             res.writeHead(200, { 'Content-Type': 'text/css' });
+            res.end(data);
+        });
+
+        return;
+    }
+
+    // =========================
+    // 📦 JS Modules
+    // =========================
+    if (req.url.startsWith('/Modules/')) {
+        const jsFile = path.basename(req.url);
+        const jsPath = path.join(__dirname, 'Modules', jsFile);
+
+        console.log("Buscando Módulo en:", jsPath);
+
+        fs.readFile(jsPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                return res.end("Módulo no encontrado");
+            }
+
+            res.writeHead(200, { 'Content-Type': 'application/javascript' });
+            res.end(data);
+        });
+
+        return;
+    }
+
+    // =========================
+    // 📜 JS (Scripts folder)
+    // =========================
+    if (req.url.startsWith('/scripts/') || req.url.startsWith('/Scripts/')) {
+        const jsFile = path.basename(req.url);
+        const jsPath = path.join(__dirname, 'scripts', jsFile);
+
+        console.log("Buscando JS en:", jsPath);
+
+        fs.readFile(jsPath, (err, data) => {
+            if (err) {
+                res.writeHead(404, { 'Content-Type': 'text/plain' });
+                return res.end("JS no encontrado");
+            }
+
+            res.writeHead(200, { 'Content-Type': 'application/javascript' });
             res.end(data);
         });
 
@@ -55,7 +102,6 @@ const servidor = http.createServer((req, res) => {
             fileName = 'index.html';
             break;
 
-            
         case '/p1':
             fileName = 'pagina1.html';
             break;
@@ -81,7 +127,7 @@ const servidor = http.createServer((req, res) => {
             return res.end("Página no encontrada");
     }
 
-    const filePath = path.join(__dirname, 'Pages', fileName);
+    const filePath = path.join(__dirname, 'pages', fileName);
 
     fs.readFile(filePath, (err, data) => {
         if (err) {

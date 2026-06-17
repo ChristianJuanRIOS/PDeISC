@@ -1,0 +1,33 @@
+/* =============================================
+   VARIABLES.CSS — Tokens globales
+   ============================================= */
+:root {
+    --font: Arial, sans-serif;
+    --fondo: #f0f0ed;
+    --texto: #1a1a1a;
+    --textoSub: #666;
+    --textoMuted: #888;
+    --borde: rgba(0,0,0,0.08);
+    --borde-md: rgba(0,0,0,0.15);
+    --card: #ffffff;
+    --input: #fafafa;
+    --boton: #1a1a1a;
+    --botonHover: #333;
+    --radius: 8px;
+    --radius-md: 12px;
+    --radius-lg: 14px;
+    --transition: 0.15s;
+
+    /* Colores por sección */
+    --color-clima:  #185FA5;
+    --color-calc:   #534AB7;
+    --color-hora:   #0F6E56;
+    --color-ops:    #854F0B;
+    --color-stats:  #993C1D;
+
+    --bg-clima:  #E6F1FB;
+    --bg-calc:   #EEEDFE;
+    --bg-hora:   #E1F5EE;
+    --bg-ops:    #FAEEDA;
+    --bg-stats:  #FAECE7;
+}

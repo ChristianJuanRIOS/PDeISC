@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtro de Números</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+</head>
+<body>
+  <button class="btn-dark" id="toggleDark">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+
+  <div class="container">
+    <h2>Filtro de números</h2>
+    <p class="subtitulo">Subí un archivo .txt con números y filtramos los que empiezan y terminan con el mismo dígito</p>
+
+
+    <div class="upload-area" id="uploadArea">
+      <i class="fa-solid fa-file-arrow-up"></i>
+      <p>Arrastrá tu archivo .txt o hacé click para seleccionarlo</p>
+      <!-- accept=".txt" filtra en el explorador de archivos, pero se valida también en JS -->
+      <!-- El input está oculto por CSS; se activa programáticamente desde uploadArea -->
+      <input type="file" id="inputArchivo" accept=".txt">
+    </div>
+
+
+    <!-- Zona de mensajes de estado: se llena y limpia desde mostrarMensaje() en ui.js -->
+    <p id="mensaje"></p>
+
+
+    <!-- Oculto hasta que se procese un archivo; se muestra desde mostrarResultados() -->
+    <div class="stats" id="stats" style="display:none">
+      <div class="stat-card" id="cardUtiles">
+        <span class="stat-num" id="contUtiles">0</span>
+        <span class="stat-label">Útiles</span>
+      </div>
+      <div class="stat-card" id="cardNoUtiles">
+        <span class="stat-num" id="contNoUtiles">0</span>
+        <span class="stat-label">No útiles</span>
+      </div>
+      <div class="stat-card" id="cardPorcentaje">
+        <span class="stat-num" id="porcentaje">0%</span>
+        <span class="stat-label">Porcentaje útiles</span>
+      </div>
+    </div>
+
+
+    <div class="lista-header" id="listaHeader" style="display:none">
+      <span>Números filtrados</span>
+    </div>
+
+
+    <!-- Los <li> se generan dinámicamente en mostrarResultados() -->
+    <ul id="lista"></ul>
+
+
+    <!-- onclick="guardar()" funciona porque main.js expone la función vía window.guardar -->
+    <button class="btn-guardar" id="btnGuardar" style="display:none" onclick="guardar()">
+      Guardar resultado
+    </button>
+  </div>
+
+  
+  <!-- type="module": habilita imports/exports ES6; cada script tiene scope propio -->
+  <script type="module" src="/script/main.js"></script>
+  <script type="module" src="/script/darkmode.js"></script>
+</body>
+</html>

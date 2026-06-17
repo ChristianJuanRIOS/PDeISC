@@ -2,22 +2,66 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Menú principal</h1>
 
-    <nav>
-        <a href="/p1">Clima</a>
-        <a href="/p2">Cálculo</a>
-        <a href="/p3">Hora</a>
-        <a href="/p4">Operaciones</a>
-        <a href="/p5">Estadísticas</a>
-    </nav>
+<nav>
+    <span class="nav-logo">Mi Proyecto</span>
+    <button class="btn-dark" id="toggleDark">
+    <i class="fa-solid fa-moon"></i>
+    </button>
+</nav>
+
+<div class="hero">
+    <p class="hero-label">Menú principal</p>
+    <h1>Bienvenido</h1>
+    <p>Seleccioná una sección para comenzar.</p>
 </div>
 
+<!-- Cada <a> es una tarjeta clickeable; i-clima, i-calc, etc. definen el color del ícono via CSS -->
+<div class="cards-grid">
+    <a href="/p1" class="card">
+        <div class="card-icon i-clima">
+            <i class="fa-solid fa-cloud-sun"></i>
+        </div>
+        <span class="card-name">Clima</span>
+        <span class="card-desc">Consultá el estado del tiempo</span>
+    </a>
+    <a href="/p2" class="card">
+        <div class="card-icon i-calc">
+            <i class="fa-solid fa-calculator"></i>
+        </div>
+        <span class="card-name">Cálculo</span>
+        <span class="card-desc">Operaciones y resultados</span>
+    </a>
+    <a href="/p3" class="card">
+        <div class="card-icon i-hora">
+            <i class="fa-solid fa-clock"></i>
+        </div>
+        <span class="card-name">Hora</span>
+        <span class="card-desc">Hora actual y zonas</span>
+    </a>
+    <a href="/p4" class="card">
+        <div class="card-icon i-ops">
+            <i class="fa-solid fa-divide"></i>
+        </div>
+        <span class="card-name">Operaciones</span>
+        <span class="card-desc">Realizá operaciones entre dos números</span>
+    </a>
+    <a href="/p5" class="card">
+        <div class="card-icon i-stats">
+            <i class="fa-solid fa-chart-column"></i>
+        </div>
+        <span class="card-name">Estadísticas</span>
+        <span class="card-desc">Analizá tres números</span>
+    </a>
+</div>
+
+<script type="module" src="/scripts/darkmode.js"></script>
 </body>
 </html>

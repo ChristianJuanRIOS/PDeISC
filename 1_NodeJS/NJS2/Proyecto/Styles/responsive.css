@@ -1,0 +1,36 @@
+/* =============================================
+   RESPONSIVE.CSS — Adaptaciones para pantallas chicas
+   ============================================= */
+
+/* Tablets grandes */
+@media (max-width: 1024px) {
+    .cards-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 0.75rem 1rem;
+    }
+
+    .hero {
+        padding: 1.5rem 1rem 1rem;
+    }
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .cards-grid {
+        padding: 1rem;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

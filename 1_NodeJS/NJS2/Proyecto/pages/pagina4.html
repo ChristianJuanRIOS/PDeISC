@@ -2,37 +2,75 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Operaciones</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Operaciones</h1>
 
-    <input id="a" placeholder="Número A">
-    <input id="b" placeholder="Número B">
+<nav>
+    <span class="nav-logo">Mi Proyecto</span>
+    <a href="/p1">Clima</a>
+    <a href="/p2">Cálculo</a>
+    <a href="/p3">Hora</a>
+    <a href="/p4">Operaciones</a>
+    <a href="/p5">Estadísticas</a>
+    <button class="btn-dark" id="toggleDark">
+    <i class="fa-solid fa-moon"></i>
+    </button>
+</nav>
 
-    <button onclick="operar()">Calcular</button>
+<div class="page-wrapper">
 
-    <p id="resultado"></p>
+    <div class="page-header">
+        <div class="page-header-icon i-ops">
+            <i class="fa-solid fa-divide"></i>
+        </div>
+        <div>
+            <p class="hero-label">Sección</p>
+            <h1>Operaciones</h1>
+            <p class="hero-sub">Multiplicá y dividí entre dos números</p>
+        </div>
+    </div>
 
-    <a href="/">Volver al menú</a>
+    <div class="clima-card">
+        <label class="input-label">Números</label>
+        <div class="input-row">
+            <input id="a" placeholder="Número A">
+            <input id="b" placeholder="Número B">
+        </div>
+        <div class="btn-row">
+            <button type="button" onclick="operar()">
+                <i class="fa-solid fa-calculator"></i> Calcular
+            </button>
+        </div>
+
+        <div id="resultado-multi" class="resultado-box hidden">
+            <i class="fa-solid fa-xmark resultado-icon" style="color: #854F0B;"></i>
+            <div>
+                <p class="resultado-ciudad" style="color: #854F0B;">Multiplicación</p>
+                <p class="resultado-texto" id="texto-multi"></p>
+            </div>
+        </div>
+
+        <div id="resultado-divi" class="resultado-box hidden" style="margin-top: 10px;">
+            <i class="fa-solid fa-divide resultado-icon" style="color: #854F0B;"></i>
+            <div>
+                <p class="resultado-ciudad" style="color: #854F0B;">División</p>
+                <p class="resultado-texto" id="texto-divi"></p>
+            </div>
+        </div>
+    </div>
+
+    <a href="/" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Volver al menú
+    </a>
+
 </div>
 
-<script>
-async function operar() {
-    const a = document.getElementById("a").value;
-    const b = document.getElementById("b").value;
-
-    const res = await fetch(`/api/operaciones?a=${a}&b=${b}`);
-    const data = await res.json();
-
-    document.getElementById("resultado").innerText =
-        "Multiplicación: " + data.multiplicar +
-        " | División: " + data.dividir;
-}
-</script>
-
+<script src="/scripts/operaciones.js" type="module"></script>
+<script type="module" src="/scripts/darkmode.js"></script>
 </body>
 </html>

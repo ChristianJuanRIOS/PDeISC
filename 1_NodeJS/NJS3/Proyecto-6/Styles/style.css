@@ -1,54 +1,93 @@
+/* ─── Variables de tema ──────────────────────────────────────────────────── */
+:root {
+  --bg:         #f4f4f4;
+  --surface:    #ffffff;
+  --text:       #2c3e50;
+  --text-label: #333333;
+  --border:     #cccccc;
+  --shadow:     rgba(0, 0, 0, 0.1);
+  --input-focus-shadow: rgba(74, 144, 226, 0.2);
+}
+
+body.dark {
+  --bg:         #1a1a2e;
+  --surface:    #16213e;
+  --text:       #e0e0e0;
+  --text-label: #cccccc;
+  --border:     #2a2a4a;
+  --shadow:     rgba(0, 0, 0, 0.4);
+  --input-focus-shadow: rgba(74, 144, 226, 0.35);
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
+
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  background: var(--bg);
+  color: var(--text);
   text-align: center;
   margin: 0;
   padding: 20px;
 
-
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-
 form {
-  background: white;
+  background: var(--surface);
   padding: 20px;
   border-radius: 10px;
   width: 100%;
   max-width: 420px;
 
-
   display: flex;
   flex-direction: column;
   gap: 12px;
 
-
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
+label {
+  color: var(--text-label);
+  transition: color 0.3s ease;
+}
 
 input, select {
   padding: 14px;
   border-radius: 10px;
-  border: 1px solid #ccc;
-
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
 
   font-size: 16px;
 
-  
   width: 100%;
   box-sizing: border-box;
+
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Los radio buttons no necesitan transición y flashean si se la aplica */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  padding: 0;
+  transition: none;
+}
+
+input::placeholder {
+  color: var(--text-label);
+  opacity: 0.7;
+}
 
 input:focus, select:focus {
   outline: none;
   border-color: #4a90e2;
-  box-shadow: 0 0 0 3px rgba(74,144,226,0.2);
+  box-shadow: 0 0 0 3px var(--input-focus-shadow);
 }
-
 
 form div {
   display: flex;
@@ -58,8 +97,12 @@ form div {
   font-size: 14px;
 }
 
+/* Radio buttons heredan el color del label contenedor */
+form div label {
+  color: var(--text);
+}
 
-button {
+button[type="submit"] {
   padding: 14px;
   border: none;
   border-radius: 10px;
@@ -68,32 +111,64 @@ button {
   cursor: pointer;
   font-size: 16px;
 
-
-  transition: 0.2s ease;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-
-button:hover {
+button[type="submit"]:hover {
   background: #357abd;
   transform: scale(1.02);
 }
 
+/* ─── Botón flotante de tema ─────────────────────────────────────────────── */
+.btn-tema {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+
+  width: 46px;
+  height: 46px;
+  max-width: none;
+  padding: 0;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  font-size: 18px;
+
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-tema:hover {
+  transform: scale(1.12);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
+}
+
+body.dark .btn-tema {
+  background: linear-gradient(135deg, #e2c94a, #bd9f35);
+}
+/* ─────────────────────────────────────────────────────────────────────────── */
 
 .card {
   margin-top: 20px;
-  background: white;
+  background: var(--surface);
+  color: var(--text);
   padding: 15px;
   border-radius: 10px;
 
-  
   width: 100%;
   max-width: 420px;
-
+  margin-bottom: 40px;
 
   text-align: left;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px var(--shadow);
+  transition: background 0.3s ease, color 0.3s ease;
 }
-
 
 @media (max-width: 600px) {
   input, select {

@@ -5,28 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página 4</title>
   <link rel="stylesheet" href="/Styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/Styles/darkmode.css">
 </head>
 <body>
+
+  <button id="btn-darkmode" title="Cambiar tema">
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+  </button>
 
   
   <h1>Página 4</h1>
 
 
-  <!-- Botonera de controles: ids usados por page4.js para escuchar clicks -->
-  <button id="btn4">Crear elemento</button>
-  <button id="btn-color">Cambiar color (ultimo elemento)</button>
-  <button id="btn-borrar">Borrar último</button>
-  <!-- Botón global de navegación: home.js lo usa para volver al menú principal -->
-  <button class="btn-volver" id="btn-home">Volver al menú</button>
+  <div class="container">
+    <button id="btn4">Crear elemento</button>
+    <button id="btn-color">Cambiar color (último elemento)</button>
+    <button id="btn-borrar">Borrar último</button>
+    <button class="btn-volver" id="btn-home">Volver al menú</button>
+  </div>
 
-  
-  <!-- Zona de inyección: page4.js agrega y elimina elementos aquí -->
+
+  <!-- #contenedor va FUERA del .container porque recibe elementos dinámicos creados por JS -->
   <div id="contenedor"></div>
 
 
   <script src="/Scripts/home.js"></script>
   <script src="/Scripts/page4.js"></script>
-
-
+  <script src="/Scripts/darkmode.js"></script>
 </body>
 </html>

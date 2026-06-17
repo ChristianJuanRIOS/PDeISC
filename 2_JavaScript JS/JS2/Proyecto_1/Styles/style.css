@@ -1,0 +1,215 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  transition: background-color 0.4s ease;
+}
+
+.container {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+  width: 420px;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+h2 {
+  font-size: 1.6rem;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+  transition: color 0.4s ease;
+}
+
+.subtitulo {
+  color: #888;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  transition: color 0.4s ease;
+}
+
+/* Fila input + botón agregar */
+.input-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1.5px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, background-color 0.4s ease, color 0.4s ease;
+}
+
+.input-row input:focus {
+  border-color: #007bff;
+}
+
+.input-row input::placeholder {
+  transition: color 0.4s ease;
+}
+
+.input-row button {
+  padding: 11px 18px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.input-row button:hover {
+  background-color: #0056b3;
+}
+
+/* Mensajes */
+#mensaje {
+  min-height: 22px;
+  font-size: 0.88rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  transition: color 0.4s ease;
+}
+
+.ok    { color: #28a745; }
+.error { color: #dc3545; }
+
+/* Encabezado de lista */
+.lista-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #444;
+  font-size: 0.95rem;
+  transition: color 0.4s ease;
+}
+
+.badge {
+  background: #e8f0fe;
+  color: #007bff;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Lista */
+ul {
+  padding: 0;
+  max-height: 220px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+}
+
+li {
+  list-style: none;
+  background: #f8f9fa;
+  border-left: 4px solid #007bff;
+  margin: 6px 0;
+  padding: 9px 14px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  color: #333;
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+}
+
+/* Botón guardar */
+.btn-guardar {
+  width: 100%;
+  padding: 13px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-guardar:hover {
+  background-color: #1e7e34;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    min-height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    min-height: calc(100vh - 32px);
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-row button {
+    width: 100%;
+    padding: 13px;
+  }
+
+  ul {
+    max-height: 180px;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+
+/* Scrollbar más fácil de usar */
+ul::-webkit-scrollbar {
+  width: 12px;
+}
+
+ul::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background: #c0c0c0;
+  border-radius: 4px;
+  border: 2px solid #f1f1f1;
+}
+
+ul::-webkit-scrollbar-thumb:hover {
+  background: #a0a0a0;
+}

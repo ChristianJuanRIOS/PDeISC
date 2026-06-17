@@ -2,19 +2,30 @@
 const contenedor = document.getElementById("contenedor");
 
 
+// Muestra u oculta el botón "Quitar elemento" según si hay items en el contenedor
+// Se busca btnQuitar en cada llamada porque innerHTML + recrea los nodos del DOM
+function actualizarBtnQuitar() {
+  const btnQuitar = document.getElementById("btn-quitar");
+  const hayItems = contenedor.querySelector(".item") !== null;
+  btnQuitar.style.display = hayItems ? "block" : "none";
+}
+
+
 // Cada click agrega un párrafo al final del contenedor
 document.getElementById("btn-texto").addEventListener("click", () => {
   contenedor.innerHTML += `
     <p class="item">Este es un párrafo agregado dinámicamente</p>
   `;
+  actualizarBtnQuitar();
 });
 
 
 // Cada click agrega una imagen placeholder al contenedor
 document.getElementById("btn-img").addEventListener("click", () => {
   contenedor.innerHTML += `
-    <img src="https://via.placeholder.com/150" class="item">
+    <img src="https://imgs.search.brave.com/5jKJFFEWHD8qSh8LAi-eBH4SWuzjPAq-LwKbdiM_HzU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAyMC8w/My8wMi8yMS8wNS90/cmVlcy00ODk2OTUz/XzY0MC5qcGc">
   `;
+  actualizarBtnQuitar();
 });
 
 
@@ -39,9 +50,9 @@ document.getElementById("btn-link").addEventListener("click", () => {
     </a>
   `;
 
-
   // % enlaces.length hace que vuelva a 0 después del último enlace
   indiceLink = (indiceLink + 1) % enlaces.length;
+  actualizarBtnQuitar();
 });
 
 
@@ -55,6 +66,7 @@ document.getElementById("btn-lista").addEventListener("click", () => {
       </ul>
     </div>
   `;
+  actualizarBtnQuitar();
 });
 
 
@@ -65,10 +77,22 @@ document.getElementById("btn-card").addEventListener("click", () => {
       <p>Contenido dinámico con innerHTML</p>
     </div>
   `;
+  actualizarBtnQuitar();
+});
+
+
+// Elimina el último elemento del contenedor
+document.getElementById("btn-quitar").addEventListener("click", () => {
+  const items = contenedor.querySelectorAll(".item");
+  if (items.length > 0) {
+    items[items.length - 1].remove();
+  }
+  actualizarBtnQuitar();
 });
 
 
 // Vacía el contenedor eliminando todo su contenido HTML
 document.getElementById("btn-clear").addEventListener("click", () => {
   contenedor.innerHTML = "";
+  actualizarBtnQuitar();
 });

@@ -1,0 +1,130 @@
+body.dark {
+  background-color: #0f0f1a;
+}
+
+
+body.dark .btn-dark {
+  background: #1e1e2e;
+  color: #e0e0ff;
+  border-color: #444;
+}
+
+
+body.dark .btn-dark:hover {
+  background: #2a2a3e;
+}
+
+
+body.dark .container {
+  background: #1e1e2e;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+
+body.dark h2          { color: #e0e0ff; }
+body.dark .subtitulo  { color: #aaa; }
+
+
+body.dark .input-row input {
+  background: #2a2a3e;
+  border-color: #444;
+  color: #e0e0ff;
+}
+
+
+body.dark .input-row input::placeholder { color: #666; }
+body.dark .lista-header { color: #ccc; }
+
+
+body.dark .badge {
+  background: #2a3a5e;
+  color: #7ab3ff;
+}
+
+
+body.dark li {
+  background: #2a2a3e;
+  border-left-color: #7ab3ff;
+  color: #ddd;
+}
+
+
+body.dark #mensaje.ok    { color: #5ddb7a; }
+body.dark #mensaje.error { color: #ff6b6b; }
+
+
+/* ===== BOTÓN MODO OSCURO ===== */
+.btn-dark {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 999;
+  width: 52px;
+  height: 52px;
+  background: white;
+  color: #333;
+  border: 1.5px solid #ddd;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.btn-dark:hover {
+  background: #f0f0f0;
+}
+
+
+body.dark ul::-webkit-scrollbar {
+  width: 12px;
+}
+
+
+body.dark ul::-webkit-scrollbar-track {
+  background: #1e1e2e;
+  border-radius: 4px;
+}
+
+
+body.dark ul::-webkit-scrollbar-thumb {
+  background: #444466;
+  border-radius: 4px;
+  border: 2px solid #1e1e2e;
+}
+
+
+body.dark ul::-webkit-scrollbar-thumb:hover {
+  background: #7ab3ff;
+}
+
+
+body.dark .upload-area {
+  border-color: #444;
+}
+
+
+body.dark .upload-area:hover,
+body.dark .upload-area.drag-over {
+  border-color: #7ab3ff;
+  background-color: #1a2a3e;
+}
+
+
+body.dark .stat-card {
+  background: #2a2a3e;
+}
+
+
+body.dark .stat-num {
+  color: #7ab3ff;
+}
+
+
+body.dark li {
+  color: #ddd;
+}

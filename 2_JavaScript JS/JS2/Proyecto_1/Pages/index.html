@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto JS2</title>
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.0/css/all.css">
+</head>
+<body>
+  <button class="btn-dark" id="toggleDark">
+    <i class="fa-solid fa-moon"></i>
+  </button>
+
+  <div class="container">
+    <h2>Ingreso de números</h2>
+    <p class="subtitulo">Ingresá hasta 20 números y guardá la lista</p>
+
+    <div class="input-row">
+      <input type="number" id="numero" placeholder="Ej: 42">
+      <button onclick="agregar()">Agregar</button>
+    </div>
+
+    <p id="mensaje"></p>
+
+    <div class="lista-header">
+      <span>Lista de números</span>
+      <span id="contador" class="badge">0 / 20</span>
+    </div>
+
+    <ul id="lista"></ul>
+
+    <button class="btn-guardar" onclick="guardar()">Guardar archivo</button>
+  </div>
+
+  <script type="module" src="/script/main.js"></script>
+  <script type="module" src="/script/DarkMode.js"></script>
+</body>
+</html>

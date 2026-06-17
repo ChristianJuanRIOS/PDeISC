@@ -5,27 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página 1</title>
   <link rel="stylesheet" href="/Styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/Styles/darkmode.css">
 </head>
 <body>
+
+  
+  <button id="btn-darkmode" title="Cambiar tema">
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+  </button>
 
 
   <h1>Página 1</h1>
 
 
-  <button id="btn1">Ejecutar evento</button>
-
-
-  <!-- Zona de feedback: page1.js escribe aquí el resultado del evento -->
-  <div id="mensaje"></div>
-
-
-  <!-- Botón global de navegación: home.js lo usa para volver al menú principal -->
-  <button class="btn-volver" id="btn-home">Volver al menú</button>
+  <!-- .container evita que los botones se superpongan, los apila con gap -->
+  <div class="container">
+    <button id="btn1">Ejecutar evento</button>
+    <!-- #mensaje empieza oculto (display:none en CSS), se muestra por JS -->
+    <div id="mensaje"></div>
+    <button class="btn-volver" id="btn-home">Volver al menú</button>
+  </div>
 
 
   <script src="/Scripts/page1.js"></script>
   <script src="/Scripts/home.js"></script>
-
-
+  <script src="/Scripts/darkmode.js"></script>
 </body>
 </html>

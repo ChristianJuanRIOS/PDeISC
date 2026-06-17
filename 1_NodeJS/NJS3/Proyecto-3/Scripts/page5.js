@@ -1,4 +1,3 @@
-// Valor actual del contador; se incrementa o resetea según el botón presionado
 let contador = 0;
 
 
@@ -12,7 +11,8 @@ btn.addEventListener("click", () => {
   display.textContent = contador;
 
 
-  // Agrega la clase "cambio" y la quita a los 200ms para disparar una animación CSS
+  // Se agrega la clase "cambio" para disparar la animación CSS (escala + color)
+  // y se quita a los 200ms para que pueda volver a dispararse en el próximo click
   display.classList.add("cambio");
   setTimeout(() => {
     display.classList.remove("cambio");
@@ -25,7 +25,6 @@ reset.addEventListener("click", () => {
   display.textContent = contador;
 
 
-  // Mismo efecto visual que en el incremento
   display.classList.add("cambio");
   setTimeout(() => {
     display.classList.remove("cambio");

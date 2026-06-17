@@ -1,0 +1,50 @@
+body.dark {
+    --fondo: #121212;
+    --texto: #f1f1f1;
+    --card: #1e1e1e;
+    --borde: #333;
+    --input: #2a2a2a;
+    --boton: #3b82f6;
+    --botonHover: #2563eb;
+    --shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+
+.btn-dark {
+    width: 36px;
+    height: 36px;
+    max-width: none;
+    padding: 0;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--card);
+    color: var(--texto);
+    border: 1px solid var(--borde);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: auto; /* lo empuja a la derecha */
+}
+
+
+body.dark .error-box,
+body.dark .resultado-error {
+    background-color: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+body.dark .error-box .resultado-ciudad,
+body.dark .error-box .resultado-icon,
+body.dark .resultado-error .resultado-icon {
+    color: #f87171;
+}
+
+body.dark .resultado-error .resultado-ciudad {
+    color: #fca5a5;
+}
+
+body.dark .resultado-error .resultado-texto {
+    color: #fecaca;
+}

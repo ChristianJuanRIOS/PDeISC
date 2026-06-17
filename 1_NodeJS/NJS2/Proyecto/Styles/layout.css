@@ -1,0 +1,125 @@
+/* =============================================
+   LAYOUT.CSS — Nav, hero, grillas y estructura
+   ============================================= */
+
+/* NAV */
+nav {
+    background: var(--card);
+    border-bottom: 1px solid var(--borde);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 56px;
+}
+
+.nav-logo {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+nav a {
+    color: var(--textoSub);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 14px;
+    border-radius: var(--radius);
+    border: 1px solid transparent;
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+
+nav a:hover {
+    background: #f5f5f5;
+    color: var(--texto);
+    border-color: rgba(0,0,0,0.1);
+}
+
+nav a:focus {
+    outline: none;
+    background: #e8e8e8;
+    border-color: rgba(0,0,0,0.15);
+}
+
+/* HERO (página de inicio) */
+.hero {
+    padding: 3rem 2rem 1.5rem;
+    width: 100%;
+}
+
+.hero-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--textoMuted);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
+.hero h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--texto);
+    margin-bottom: 0.4rem;
+}
+
+.hero p {
+    font-size: 15px;
+    color: var(--textoSub);
+}
+
+/* CARDS GRID (página de inicio) */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    padding: 1rem 2rem 2rem;
+    width: 100%;
+}
+
+/* PÁGINAS INTERNAS */
+.page-wrapper {
+    padding: 2.5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--texto);
+    margin: 0 0 2px;
+}
+
+.hero-sub {
+    font-size: 14px;
+    color: var(--textoMuted);
+    margin: 0;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    color: var(--textoSub);
+    text-decoration: none;
+    padding: 6px 12px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(0,0,0,0.1);
+    transition: background var(--transition), color var(--transition);
+}
+
+.back-link:hover {
+    background: var(--card);
+    color: var(--texto);
+}

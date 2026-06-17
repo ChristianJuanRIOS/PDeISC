@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Enlaces dinámicos</title>
   <link rel="stylesheet" href="/Styles/style.css">
+  <!-- Font Awesome para los íconos del botón de tema -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
+  <!-- Botón flotante para alternar modo oscuro/claro -->
+  <button class="btn-tema" id="btn-tema" title="Cambiar tema">
+    <i class="fa-solid fa-moon"></i>
+  </button>
 
   <h1>Generador de enlaces</h1>
-
 
   <!-- Botonera de controles: ids usados por pageLinks.js para escuchar clicks -->
   <div class="container">
@@ -18,23 +23,19 @@
     <button id="modificar">Modificar enlaces</button>
   </div>
 
-  
   <!-- Zona de inyección: pageLinks.js inserta los enlaces generados aquí -->
   <div id="contenedor"></div>
-
 
   <!-- Zona de feedback: pageLinks.js escribe aquí mensajes de estado -->
   <div id="mensaje"></div>
 
-
   <!-- Botón global de navegación: home.js lo usa para volver al menú principal -->
   <button class="btn-volver" id="btn-home">Volver al menú</button>
 
-
   <!-- Dos scripts separados: pageLinks.js maneja la lógica, home.js la navegación -->
+  <script src="/Scripts/darkMode.js"></script>
   <script src="/Scripts/pageLinks.js"></script>
   <script src="/Scripts/home.js"></script>
 
-  
 </body>
 </html>

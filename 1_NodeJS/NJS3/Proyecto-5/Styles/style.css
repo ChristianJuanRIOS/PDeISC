@@ -1,3 +1,24 @@
+/* ─── Variables de tema ──────────────────────────────────────────────────── */
+:root {
+  --bg:       #f4f4f4;
+  --surface:  #ffffff;
+  --text:     #2c3e50;
+  --border:   #dddddd;
+  --shadow:   rgba(0, 0, 0, 0.1);
+  --bullet:   #2c3e50;
+}
+
+
+body.dark {
+  --bg:       #1a1a2e;
+  --surface:  #16213e;
+  --text:     #e0e0e0;
+  --border:   #2a2a4a;
+  --shadow:   rgba(0, 0, 0, 0.4);
+  --bullet:   #7eb8f7;
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -6,13 +27,13 @@
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #f4f4f4;
-
-
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 
@@ -24,8 +45,6 @@ h1 {
 
 .container {
   margin-top: 20px;
-
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -40,15 +59,13 @@ button {
   border: none;
   border-radius: 12px;
   cursor: pointer;
-
-
   background: linear-gradient(135deg, #4a90e2, #357abd);
   color: white;
   font-size: 16px;
   font-weight: bold;
-
   transition: all 0.25s ease;
 }
+
 
 button:hover {
   transform: scale(1.05);
@@ -61,12 +78,44 @@ button:active {
 }
 
 
+/* ─── Botón flotante de tema ─────────────────────────────────────────────── */
+.btn-tema {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  width: 46px;
+  height: 46px;
+  max-width: none;
+  padding: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: white;
+  font-size: 18px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.btn-tema:hover {
+  transform: scale(1.12);
+  box-shadow: 0 5px 16px rgba(0, 0, 0, 0.35);
+}
+
+
+body.dark .btn-tema {
+  background: linear-gradient(135deg, #e2c94a, #bd9f35);
+}
+
+
 #contenedor {
   margin-top: 20px;
+  margin-bottom: 40px;
   width: 90%;
   max-width: 400px;
-
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,20 +125,20 @@ button:active {
 
 .item {
   width: 100%;
-  background: white;
+  background: var(--surface);
+  color: var(--text);
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #ddd;
-
-
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 6px var(--shadow);
   text-align: left;
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 
 .item a {
   display: block;
-  color: #2c3e50;
+  color: var(--text);
   text-decoration: none;
   font-weight: bold;
 }
@@ -121,11 +170,12 @@ button:active {
   margin: 4px 0;
 }
 
+
 .item li::before {
   content: "•";
   position: absolute;
   left: 0;
-  color: #2c3e50;
+  color: var(--bullet);
 }
 
 

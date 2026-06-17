@@ -1,0 +1,24 @@
+h2 {
+  font-size: 1.6rem;
+  color: var(--color-text);
+  margin-bottom: 4px;
+  transition: color var(--transition);
+}
+
+.subtitulo {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+  transition: color var(--transition);
+}
+
+#mensaje {
+  min-height: 22px;
+  font-size: 0.88rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+  transition: color var(--transition);
+}
+
+.ok    { color: var(--color-success); }
+.error { color: var(--color-error); }

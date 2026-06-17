@@ -1,0 +1,39 @@
+@media (max-width: 480px) {
+  body {
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px;
+    min-height: 100vh;
+  }
+
+  .container {
+    width: 100%;
+    min-height: calc(100vh - 32px);
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  .input-row {
+    flex-direction: column;
+  }
+
+  .input-row button {
+    width: 100%;
+    padding: 13px;
+  }
+
+  ul {
+    max-height: 180px;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}

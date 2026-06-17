@@ -4,7 +4,6 @@ const modificarBtn = document.getElementById("modificar");
 const contenedor = document.getElementById("contenedor");
 const mensaje = document.getElementById("mensaje");
 
-
 // Indica si los enlaces ya fueron creados; controla el modo del botón crear (crear/borrar)
 let creados = false;
 
@@ -40,13 +39,11 @@ crearBtn.addEventListener("click", () => {
       contenedor.appendChild(link);
     }
 
-
     creados = true;
     crearBtn.textContent = "Borrar enlaces";
     mensaje.textContent = "Se crearon los enlaces.";
     mensaje.className = "info";
     mensaje.style.display = "block";
-
 
   } else {
     // Si ya existen, los elimina y resetea el estado del botón
@@ -64,7 +61,6 @@ crearBtn.addEventListener("click", () => {
 modificarBtn.addEventListener("click", () => {
   const links = contenedor.querySelectorAll("a");
 
-
   // Si no hay enlaces creados, muestra aviso y corta la ejecución
   if (links.length === 0) {
     mensaje.textContent = "No hay enlaces para modificar.";
@@ -73,22 +69,17 @@ modificarBtn.addEventListener("click", () => {
     return;
   }
 
-
   mensaje.innerHTML = "";
-
 
   links.forEach((link) => {
     const nombreAnterior = link.textContent;
-
 
     // Avanza al siguiente sitio en el array de forma cíclica
     indiceCambio = (indiceCambio + 1) % sitios.length;
     const nuevoSitio = sitios[indiceCambio];
 
-
     link.href = nuevoSitio.url;
     link.textContent = nuevoSitio.nombre;
-
 
     // Registra el cambio en el div de mensajes para que el usuario lo vea
     const p = document.createElement("p");
@@ -96,7 +87,6 @@ modificarBtn.addEventListener("click", () => {
     p.classList.add("item");
     mensaje.appendChild(p);
   });
-
 
   mensaje.className = "exito";
   mensaje.style.display = "block";

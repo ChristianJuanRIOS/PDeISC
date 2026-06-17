@@ -1,0 +1,75 @@
+/* Botón fijo en la esquina inferior derecha, siempre visible sobre el contenido */
+#btn-darkmode {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  background-color: #1e1e2e;
+  color: #f5f5f5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  z-index: 9999; /* Se asegura de estar por encima de todos los demás elementos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+#btn-darkmode:hover {
+  transform: scale(1.1) !important; /* !important necesario para sobreescribir el hover general de button */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+
+/* En modo claro se muestra la luna, el sol se oculta */
+#btn-darkmode .fa-moon { display: inline-block; }
+#btn-darkmode .fa-sun  { display: none; }
+
+
+/* Variables CSS: permiten cambiar colores en todo el sitio desde un solo lugar */
+:root {
+  --bg-color:      #f4f4f4;
+  --text-color:    #1a1a1a;
+  --surface-color: #ffffff;
+  --border-color:  #dddddd;
+}
+
+
+/* Al agregar .dark-mode al body, se redefinen las variables y todo el sitio cambia */
+body.dark-mode {
+  --bg-color:      #121212;
+  --text-color:    #e0e0e0;
+  --surface-color: #1e1e2e;
+  --border-color:  #333333;
+}
+
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+/* Los .item de página 4 también adaptan sus colores al modo oscuro */
+body.dark-mode .item {
+  background-color: var(--surface-color);
+  border-color: var(--border-color);
+  color: var(--text-color);
+}
+
+
+body.dark-mode #btn-darkmode {
+  background-color: #f5f5f5;
+  color: #1e1e2e;
+}
+
+
+/* En modo oscuro se intercambian los iconos: se oculta la luna y aparece el sol */
+body.dark-mode #btn-darkmode .fa-moon { display: none; }
+body.dark-mode #btn-darkmode .fa-sun  { display: inline-block; }

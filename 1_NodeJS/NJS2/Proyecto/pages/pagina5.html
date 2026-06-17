@@ -2,40 +2,93 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Estadísticas</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Estadísticas</h1>
 
-    <input id="a" placeholder="Número A">
-    <input id="b" placeholder="Número B">
-    <input id="c" placeholder="Número C">
+<nav>
+    <span class="nav-logo">Mi Proyecto</span>
+    <a href="/p1">Clima</a>
+    <a href="/p2">Cálculo</a>
+    <a href="/p3">Hora</a>
+    <a href="/p4">Operaciones</a>
+    <a href="/p5">Estadísticas</a>
+    <button class="btn-dark" id="toggleDark">
+    <i class="fa-solid fa-moon"></i>
+    </button>
+</nav>
 
-    <button onclick="calcular()">Calcular</button>
 
-    <p id="resultado"></p>
+<div class="page-wrapper">
 
-    <a href="/">Volver al menú</a>
+
+    <div class="page-header">
+        <div class="page-header-icon i-stats">
+            <i class="fa-solid fa-chart-column"></i>
+        </div>
+        <div>
+            <p class="hero-label">Sección</p>
+            <h1>Estadísticas</h1>
+            <p class="hero-sub">Calculá promedio, mayor y menor de tres números</p>
+        </div>
+    </div>
+
+
+    <div class="clima-card">
+        <label class="input-label">Números</label>
+        <div class="input-row">
+            <input id="a" placeholder="Número A">
+            <input id="b" placeholder="Número B">
+            <input id="c" placeholder="Número C">
+        </div>
+        <div class="btn-row">
+            <button type="button" onclick="calcular()">
+                <i class="fa-solid fa-chart-column"></i> Calcular
+            </button>
+        </div>
+
+
+        <div id="resultado-promedio" class="resultado-box hidden">
+            <i class="fa-solid fa-equals resultado-icon" style="color: #993C1D;"></i>
+            <div>
+                <p class="resultado-ciudad" style="color: #993C1D;">Promedio</p>
+                <p class="resultado-texto" id="texto-promedio"></p>
+            </div>
+        </div>
+
+
+        <div id="resultado-mayor" class="resultado-box hidden" style="margin-top: 10px;">
+            <i class="fa-solid fa-arrow-up resultado-icon" style="color: #993C1D;"></i>
+            <div>
+                <p class="resultado-ciudad" style="color: #993C1D;">Mayor</p>
+                <p class="resultado-texto" id="texto-mayor"></p>
+            </div>
+        </div>
+
+
+        <div id="resultado-menor" class="resultado-box hidden" style="margin-top: 10px;">
+            <i class="fa-solid fa-arrow-down resultado-icon" style="color: #993C1D;"></i>
+            <div>
+                <p class="resultado-ciudad" style="color: #993C1D;">Menor</p>
+                <p class="resultado-texto" id="texto-menor"></p>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="/" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Volver al menú
+    </a>
+
+
 </div>
 
-<script>
-async function calcular() {
-    const a = document.getElementById("a").value;
-    const b = document.getElementById("b").value;
-    const c = document.getElementById("c").value;
 
-    const res = await fetch(`/api/estadisticas?a=${a}&b=${b}&c=${c}`);
-    const data = await res.json();
-
-    document.getElementById("resultado").innerText =
-        "Promedio: " + data.promedio +
-        " | Mayor: " + data.mayor +
-        " | Menor: " + data.menor;
-}
-</script>
-
+<script src="/scripts/estadisticas.js" type="module"></script>
+<script type="module" src="/scripts/darkmode.js"></script>
 </body>
 </html>

@@ -1,3 +1,6 @@
+export { toggleDarkMode, initDarkMode } from "/scripts/darkmode.js";
+
+
 const IMG_1 = "https://th.bing.com/th/id/OIP.hHklYLoa-hRhsM-5keJPoAHaOL?w=115&h=180&c=7&r=0&o=7&pid=1.7&rm=3";
 const IMG_2 = "https://th.bing.com/th/id/OIP.7jUMFVbOCaSDQDaWlnNwgQHaKe?w=128&h=181&c=7&r=0&o=7&pid=1.7&rm=3";
 

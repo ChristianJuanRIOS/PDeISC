@@ -2,35 +2,70 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cálculo</title>
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-<div class="container">
-    <h1>Cálculo</h1>
 
-    <input id="a" placeholder="Número A">
-    <input id="b" placeholder="Número B">
+<nav>
+    <span class="nav-logo">Mi Proyecto</span>
+    <a href="/p1">Clima</a>
+    <a href="/p2">Cálculo</a>
+    <a href="/p3">Hora</a>
+    <a href="/p4">Operaciones</a>
+    <a href="/p5">Estadísticas</a>
+    <button class="btn-dark" id="toggleDark">
+    <i class="fa-solid fa-moon"></i>
+    </button>
+</nav>
 
-    <button onclick="sumar()">Sumar</button>
+<div class="page-wrapper">
 
-    <p id="resultado"></p>
+    <div class="page-header">
+        <div class="page-header-icon i-calc">
+            <i class="fa-solid fa-calculator"></i>
+        </div>
+        <div>
+            <p class="hero-label">Sección</p>
+            <h1>Cálculo</h1>
+            <p class="hero-sub">Realizá operaciones entre dos números</p>
+        </div>
+    </div>
 
-    <a href="/">Volver al menú</a>
+    <div class="clima-card">
+        <label class="input-label">Números</label>
+        <div class="input-row">
+            <input id="a" placeholder="Número A">
+            <input id="b" placeholder="Número B">
+        </div>
+        <div class="btn-row">
+            <button type="button" onclick="calcularSuma()">
+                <i class="fa-solid fa-plus"></i> Sumar
+            </button>
+            <button type="button" onclick="calcularResta()">
+                <i class="fa-solid fa-minus"></i> Restar
+            </button>
+        </div>
+
+        <div id="resultado-box" class="resultado-box hidden">
+            <i class="fa-solid fa-equals resultado-icon"></i>
+            <div>
+                <p class="resultado-ciudad">Resultado</p>
+                <p class="resultado-texto" id="resultado"></p>
+            </div>
+        </div>
+    </div>
+
+    <a href="/" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Volver al menú
+    </a>
+
 </div>
 
-<script>
-async function sumar() {
-    const a = document.getElementById("a").value;
-    const b = document.getElementById("b").value;
-
-    const res = await fetch(`/api/sumar?a=${a}&b=${b}`);
-    const data = await res.json();
-
-    document.getElementById("resultado").innerText = data.resultado;
-}
-</script>
-
+<script src="/scripts/calculo.js" type="module"></script>
+<script type="module" src="/scripts/darkmode.js"></script>
 </body>
 </html>

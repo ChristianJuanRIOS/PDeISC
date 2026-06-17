@@ -1,15 +1,24 @@
 const mensaje = document.getElementById("mensaje");
+const btn = document.getElementById("btn3");
 
-document.getElementById("btn3").addEventListener("click", () => {
-  const fecha = new Date();
 
-  const formato = fecha.toLocaleString("es-AR");
+// Variable que actúa como interruptor para saber si el mensaje está visible o no
+let visible = false;
 
-  mensaje.textContent = `Registro del sistema: ${formato}`;
-  mensaje.className = "info";
-  mensaje.style.display = "block";
 
-  setTimeout(() => {
+btn.addEventListener("click", () => {
+  if (!visible) {
+    // new Date() crea un objeto con la fecha y hora actuales
+    // toLocaleString("es-AR") la formatea en formato argentino: dd/mm/aaaa, hh:mm:ss
+    const fecha = new Date();
+    mensaje.textContent = `Registro del sistema: ${fecha.toLocaleString("es-AR")}`;
+    mensaje.className = "info";
+    mensaje.style.display = "block";
+    btn.textContent = "Ocultar registro";
+    visible = true;
+  } else {
     mensaje.style.display = "none";
-  }, 2500);
+    btn.textContent = "Mostrar registro";
+    visible = false;
+  }
 });

@@ -5,13 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Index</title>
   <link rel="stylesheet" href="/Styles/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="/Styles/darkmode.css">
 </head>
 <body>
+
+  
+  <!-- Botón flotante para cambiar entre modo claro y oscuro -->
+  <button id="btn-darkmode" title="Cambiar tema">
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+  </button>
 
 
   <h1>Menú principal</h1>
 
-  
+
   <!-- Botonera de navegación: cada botón redirige a una página distinta via index.js -->
   <div class="container">
     <button id="btn1">Página 1</button>
@@ -22,7 +31,8 @@
     <button id="btn6">Página 6</button>
   </div>
 
-  
+
   <script src="/Scripts/index.js"></script>
+  <script src="/Scripts/darkmode.js"></script>
 </body>
 </html>

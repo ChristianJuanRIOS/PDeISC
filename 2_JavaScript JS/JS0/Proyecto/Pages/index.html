@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mensajes Secretos — OIA 2004</title>
+  <link rel="stylesheet" href="../Styles/reset.css" />
+  <link rel="stylesheet" href="../Styles/variables.css" />
+  <link rel="stylesheet" href="../Styles/main.css" />
+  <link rel="stylesheet" href="../Styles/componentes.css" />
+</head>
+<body>
+  <div class="page-wrapper">
+
+    <header class="header">
+      <div class="header__badge">OIA 2004 · Nivel 1 · Problema 1</div>
+      <h1 class="header__title">Mensajes <span class="accent">Secretos</span></h1>
+      <p class="header__sub">Decodificador de mensajes cifrados con paréntesis</p>
+    </header>
+
+    <main class="main">
+
+      <!-- PANEL IZQUIERDO: Entrada -->
+      <section class="panel panel--input">
+        <div class="panel__label">SECRETO.IN</div>
+        <h2 class="panel__title">Mensaje Cifrado</h2>
+        <textarea
+          id="inputMensaje"
+          class="textarea"
+          placeholder="Ej: Hoy (.sh 22 sal a) (ed asac ne sominuer son) Marcelo."
+          rows="5"
+          maxlength="500"
+        ></textarea>
+        <div class="char-counter"><span id="charCount">0</span> / 500</div>
+
+        <div class="btn-group">
+          <button class="btn btn--primary" id="btnDecodificar">
+          Decodificar
+          </button>
+          <button class="btn btn--ghost" id="btnLimpiar">Limpiar</button>
+          <button class="btn btn--ghost" id="btnEjemplo">Cargar ejemplo</button>
+        </div>
+
+        <div id="mensajeError" class="alert alert--error hidden"></div>
+      </section>
+
+      <!-- PANEL DERECHO: Salida -->
+      <section class="panel panel--output">
+        <div class="panel__label">SECRETO.OUT</div>
+        <h2 class="panel__title">Mensaje Decodificado</h2>
+        <div id="outputMensaje" class="output-box">
+          <span class="output-box__placeholder">El resultado aparecerá aquí…</span>
+        </div>
+
+        <div class="steps-block" id="stepsBlock" style="display:none;">
+          <h3 class="steps-block__title">Proceso paso a paso</h3>
+          <ol class="steps-list" id="stepsList"></ol>
+        </div>
+
+        <button class="btn btn--copy hidden" id="btnCopiar">📋 Copiar resultado</button>
+      </section>
+
+    </main>
+
+    <!-- INFO SECTION -->
+    <section class="info-section">
+      <h2 class="info-section__title">¿Cómo funciona el cifrado?</h2>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card__num">01</div>
+          <p>El texto original tiene fragmentos <strong>entre paréntesis</strong> escritos al revés.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">02</div>
+          <p>Para decodificar, se toma cada segmento entre <code>()</code> y se <strong>invierte</strong>.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">03</div>
+          <p>Las partes fuera de paréntesis <strong>no se modifican</strong>.</p>
+        </div>
+        <div class="info-card">
+          <div class="info-card__num">04</div>
+          <p>Los paréntesis son removidos; el mensaje resultante es el <strong>original</strong>.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Mensajes Secretos · OIA 2004 · Desarrollado con JS vanilla
+    </footer>
+
+  </div>
+
+  
+  <script type="module" src="../Scripts/app.js"></script>
+</body>
+</html>

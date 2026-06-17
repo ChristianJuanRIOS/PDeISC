@@ -1,0 +1,18 @@
+:root {
+  --color-bg: #f4f6f8;
+  --color-white: #ffffff;
+  --color-primary: #007bff;
+  --color-primary-hover: #0056b3;
+  --color-success: #28a745;
+  --color-success-hover: #1e7e34;
+  --color-error: #dc3545;
+  --color-text: #1a1a2e;
+  --color-text-muted: #888;
+  --color-border: #ddd;
+  --color-li-bg: #f8f9fa;
+  --color-badge-bg: #e8f0fe;
+  --color-scrollbar-track: #f1f1f1;
+  --color-scrollbar-thumb: #c0c0c0;
+  --color-scrollbar-thumb-hover: #a0a0a0;
+  --transition: 0.4s ease;
+}

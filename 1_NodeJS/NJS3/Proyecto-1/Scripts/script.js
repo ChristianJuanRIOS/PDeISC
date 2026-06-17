@@ -1,14 +1,18 @@
 import {
+  toggleDarkMode,
+  initDarkMode,
   agregarH1,
   cambiarTexto,
   cambiarColor,
   agregarImagen,
   cambiarImagen,
   cambiarTamano
-} from "../js/funciones.js";
+} from "/js/funciones.js";
 
 
 // eventos
+initDarkMode();
+document.getElementById("btn-darkmode").addEventListener("click", toggleDarkMode);
 document.getElementById("btn-h1").addEventListener("click", agregarH1);
 document.getElementById("btn-texto").addEventListener("click", cambiarTexto);
 document.getElementById("btn-color").addEventListener("click", cambiarColor);

@@ -5,8 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>InnerHTML</title>
   <link rel="stylesheet" href="/Styles/style.css">
+  <!-- Font Awesome para los íconos del botón de tema -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+
+  
+  <!-- Botón flotante para alternar modo oscuro/claro -->
+  <button class="btn-tema" id="btn-tema" title="Cambiar tema">
+    <i class="fa-solid fa-moon"></i>
+  </button>
 
 
   <h1>Agregar elementos con innerHTML</h1>
@@ -20,6 +28,7 @@
     <button id="btn-lista">Agregar lista</button>
     <button id="btn-card">Agregar tarjeta</button>
     <button id="btn-clear">Limpiar</button>
+    <button id="btn-quitar" style="display:none; background: linear-gradient(135deg, #e25555, #bd3535);">Quitar elemento</button>
   </div>
 
 
@@ -27,6 +36,7 @@
   <div id="contenedor"></div>
 
 
+  <script src="/Scripts/darkmode.js"></script>
   <script src="/Scripts/pageInner.js"></script>
 
 
