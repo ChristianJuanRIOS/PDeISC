@@ -1,7 +1,9 @@
 import { suma, resta, multiplicacion, division } from '/Modulos/calculos.js';
 
-// ── Modo oscuro ──────────────────────────────────────────
+
+// ── Modo oscuro ──
 const toggleBtn = document.getElementById('toggleBtn');
+
 
 function setDarkMode(isDark) {
     document.body.classList.toggle('dark-mode', isDark);
@@ -11,14 +13,17 @@ function setDarkMode(isDark) {
     localStorage.setItem('darkMode', isDark);
 }
 
+
 // Restaurar preferencia guardada
 setDarkMode(localStorage.getItem('darkMode') === 'true');
+
 
 toggleBtn.addEventListener('click', () => {
     setDarkMode(!document.body.classList.contains('dark-mode'));
 });
 
-// ── Tabla de ejercicios ──────────────────────────────────
+
+// ── Tabla de ejercicios ──
 const secciones = [
     {
         titulo: 'Ejercicio 2',
@@ -49,13 +54,16 @@ const secciones = [
     },
 ];
 
+
 const tabla = document.getElementById('tabla');
+
 
 secciones.forEach(({ titulo, operaciones }) => {
     const encabezado = document.createElement('tr');
     encabezado.innerHTML = `<td colspan="2" style="background:#555;color:white;font-weight:bold;">${titulo}</td>`;
     tabla.appendChild(encabezado);
 
+    
     operaciones.forEach(({ label, resultado }) => {
         const fila = document.createElement('tr');
         fila.innerHTML = `<td>${label}</td><td>${resultado}</td>`;

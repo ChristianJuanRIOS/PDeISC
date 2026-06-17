@@ -79,9 +79,19 @@ body.dark-mode td[colspan="2"] {
     color: #f0f0f0;
 }
 
+/* ── Responsive ── */
 @media (max-width: 480px) {
     th, td {
         padding: 8px 6px;
         font-size: 13px;
+        word-break: break-word;
+    }
+
+    .toggle-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+        top: 12px;
+        right: 12px;
     }
 }
