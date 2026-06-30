@@ -1,0 +1,95 @@
+/* ============================
+   MODO OSCURO / CLARO (TOGGLE)
+   ============================ */
+
+/* Transición suave en todo el sitio al cambiar de tema */
+body,
+.card,
+.method,
+.user-card,
+input,
+select,
+button,
+.theme-toggle {
+  transition: background-color 0.4s ease,
+              color 0.4s ease,
+              border-color 0.4s ease;
+}
+
+/* Variables del modo claro: pisan las de :root (definidas en style.css)
+   cuando body tiene la clase .light-mode */
+body.light-mode {
+  --bg: #f4f4f8;
+  --panel: #ffffff;
+  --panel-2: #eef0f4;
+  --line: #d8dce3;
+  --text: #1a1a1a;
+  --muted: #6b7280;
+}
+
+/* El botón "Cargar usuario" mantiene texto oscuro en ambos modos */
+body.light-mode button {
+  color: #0a1410;
+}
+
+/* ============================
+   BOTÓN DE TEMA (toggle redondo)
+   ============================ */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--panel-2);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.theme-toggle i {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Por defecto (modo oscuro) se ve la luna, se oculta el sol */
+.icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+.icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* En modo claro se invierte */
+body.light-mode .icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+body.light-mode .icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* Animación shake al pasar el cursor */
+.theme-toggle:hover {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-12deg); }
+  40%  { transform: rotate(10deg); }
+  60%  { transform: rotate(-8deg); }
+  80%  { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}

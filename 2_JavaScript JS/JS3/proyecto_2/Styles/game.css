@@ -1,0 +1,429 @@
+/* ============================
+   RESET Y BASE
+   ============================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #000;
+  font-family: 'Press Start 2P', monospace;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#app {
+  position: relative;
+  width: 532px;
+  text-align: center;
+}
+
+/* ============================
+   SISTEMA DE PANTALLAS
+   ============================ */
+.screen {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.screen.active {
+  display: flex;
+}
+
+/* ============================
+   PANTALLA MENÚ
+   ============================ */
+#menu-screen {
+  position: relative;
+  height: 640px;
+  justify-content: center;
+  gap: 16px;
+}
+
+.menu-title {
+  font-size: 32px;
+  color: #ffdd00;
+  text-shadow: 0 0 20px #ffdd0088, 0 0 60px #ffdd0033;
+  letter-spacing: 3px;
+}
+
+.menu-sub {
+  font-size: 8px;
+  color: #666;
+  margin-top: -8px;
+  letter-spacing: 2px;
+}
+
+.hi-score {
+  font-size: 9px;
+  color: #ff4400;
+  margin-top: 2px;
+}
+
+/* Fantasmas animados del menú */
+.menu-ghosts {
+  position: relative;
+  height: 50px;
+  width: 280px;
+  margin: 8px 0;
+}
+
+.mg {
+  position: absolute;
+  width: 32px;
+  height: 36px;
+  border-radius: 16px 16px 0 0;
+  animation: ghostFloat 2.5s ease-in-out infinite;
+}
+
+.mg::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 32px;
+  height: 10px;
+  background: inherit;
+  clip-path: polygon(0% 0%, 20% 100%, 40% 0%, 60% 100%, 80% 0%, 100% 0%);
+}
+
+.mg:nth-child(1) {
+  left: 10px;
+  background: #ff4400;
+  animation-delay: 0s;
+  box-shadow: 0 0 12px #ff440088;
+}
+
+.mg:nth-child(2) {
+  left: 80px;
+  background: #00ccff;
+  animation-delay: 0.4s;
+  box-shadow: 0 0 12px #00ccff88;
+}
+
+.mg:nth-child(3) {
+  left: 150px;
+  background: #ffee00;
+  animation-delay: 0.8s;
+  box-shadow: 0 0 12px #ffee0088;
+}
+
+.mg:nth-child(4) {
+  left: 220px;
+  background: #44cc44;
+  animation-delay: 1.2s;
+  box-shadow: 0 0 12px #44cc4488;
+}
+
+@keyframes ghostFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Botones del menú */
+.mbtn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 10px;
+  padding: 11px 28px;
+  border: 2px solid;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.15s;
+  min-width: 210px;
+  letter-spacing: 1px;
+}
+
+.mbtn:hover {
+  transform: scale(1.06);
+  filter: brightness(1.4);
+}
+
+.mbtn:active {
+  transform: scale(0.97);
+}
+
+.bs { border-color: #ffdd00; color: #ffdd00; }
+.bo { border-color: #00ccff; color: #00ccff; }
+.bp { border-color: #44cc44; color: #44cc44; }
+.bc { border-color: #ff4400; color: #ff4400; }
+
+/* ============================
+   PANTALLA JUEGO
+   ============================ */
+#game-screen {
+  gap: 6px;
+}
+
+#hud {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 4px;
+  font-size: 9px;
+}
+
+.hs { color: #fff; }
+.hl { color: #ffdd00; }
+.hv { color: #00ccff; }
+
+canvas {
+  border: 1px solid #1a1a2e;
+  display: block;
+}
+
+/* Barra de habilidades */
+#abar {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  padding: 4px 0;
+  min-height: 26px;
+  align-items: center;
+}
+
+.abox {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.abar-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transition: height 0.1s linear;
+}
+
+/* ============================
+   CONTROLES TÁCTILES
+   ============================ */
+#tctrl {
+  display: none;
+  width: 150px;
+  height: 110px;
+  position: relative;
+  margin-top: 6px;
+}
+
+.tb {
+  position: absolute;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.tb:active {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.tu { top: 0; left: 53px; }
+.td { bottom: 0; left: 53px; }
+.tl { top: 33px; left: 0; }
+.tr { top: 33px; right: 0; }
+
+/* ============================
+   OVERLAY (PAUSA / MENSAJES)
+   ============================ */
+#ov {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+#ov.active {
+  display: flex;
+}
+
+#ovt {
+  font-size: 13px;
+  color: #ffdd00;
+  text-shadow: 0 0 10px #ffdd0066;
+}
+
+/* ============================
+   PANTALLA GAME OVER
+   ============================ */
+#go-screen {
+  gap: 18px;
+  height: 640px;
+  justify-content: center;
+}
+
+.got {
+  font-size: 26px;
+  color: #ff4400;
+  text-shadow: 0 0 20px #ff440066;
+}
+
+.gos {
+  font-size: 13px;
+  color: #ffdd00;
+}
+
+.goh {
+  font-size: 9px;
+  color: #666;
+}
+
+/* ============================
+   PANTALLA OPCIONES
+   ============================ */
+#op-screen {
+  gap: 18px;
+  height: 640px;
+  justify-content: center;
+}
+
+.opt {
+  font-size: 18px;
+  color: #00ccff;
+}
+
+.orow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.olbl {
+  font-size: 9px;
+  color: #666;
+}
+
+.obtn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 8px;
+  padding: 8px 14px;
+  border: 1px solid #444;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.obtn.ac {
+  border-color: #00ccff;
+  color: #00ccff;
+}
+
+.obtn:hover {
+  filter: brightness(1.3);
+}
+
+/* Botón genérico de volver */
+.bbtn {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 9px;
+  padding: 10px 20px;
+  border: 1px solid #555;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: all 0.15s;
+}
+
+.bbtn:hover {
+  color: #fff;
+  border-color: #fff;
+}
+
+/* ============================
+   PANTALLA CRÉDITOS
+   ============================ */
+#cr-screen {
+  gap: 14px;
+  height: 640px;
+  justify-content: center;
+}
+
+.crt {
+  font-size: 18px;
+  color: #ff4400;
+}
+
+.crtx {
+  font-size: 7px;
+  color: #666;
+  line-height: 2.2;
+}
+
+.crg {
+  display: flex;
+  gap: 14px;
+  margin: 6px 0;
+}
+
+.cri {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.crd {
+  width: 18px;
+  height: 18px;
+  border-radius: 9px 9px 0 0;
+}
+
+.crn {
+  font-size: 6px;
+}
+
+/* ============================
+   PANTALLA PUNTAJES
+   ============================ */
+#sc-screen {
+  gap: 14px;
+  height: 640px;
+  justify-content: center;
+}
+
+.sct {
+  font-size: 18px;
+  color: #44cc44;
+}
+
+.scl {
+  font-size: 9px;
+  color: #ffdd00;
+  line-height: 2.5;
+}
+
+.sce {
+  font-size: 8px;
+  color: #333;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto 1 · Lectura dinámica de formularios</title>
+<link rel="stylesheet" href="styles/style.css">
+<link rel="stylesheet" href="styles/theme.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Proyecto 1</div>
+    <button id="toggle-theme" class="theme-toggle" aria-label="Cambiar modo">
+  <i class="fa-solid fa-sun icon-sun"></i>
+  <i class="fa-solid fa-moon icon-moon"></i>
+</button>
+  </header>
+
+  <div class="card">
+    <h2>Nuevo usuario <span>· formulario</span></h2>
+    <form id="userForm" novalidate>
+      <label for="nombre">Nombre</label>
+      <input type="text" id="nombre" name="nombre" placeholder="Ej: Lucía">
+      <div class="error" id="err-nombre">Ingresá un nombre válido (mínimo 2 letras).</div>
+
+      <div class="row2">
+        <div>
+          <label for="edad">Edad</label>
+          <input type="number" id="edad" name="edad" placeholder="Ej: 28" min="0" max="120">
+          <div class="error" id="err-edad">Edad inválida (0-120).</div>
+        </div>
+        <div>
+          <label for="pais">País</label>
+          <input type="text" id="pais" name="pais" placeholder="Ej: Argentina">
+          <div class="error" id="err-pais">Ingresá un país.</div>
+        </div>
+      </div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Ej: lucia@mail.com">
+      <div class="error" id="err-email">Ingresá un email válido.</div>
+
+      <label for="rol">Rol</label>
+      <select id="rol" name="rol">
+        <option value="">Seleccioná un rol</option>
+        <option value="Administrador">Administrador</option>
+        <option value="Editor">Editor</option>
+        <option value="Invitado">Invitado</option>
+      </select>
+      <div class="error" id="err-rol">Seleccioná un rol.</div>
+
+      <button type="submit">Cargar usuario</button>
+    </form>
+  </div>
+
+  <div class="methods">
+    <h2>Las 3 formas de leer un formulario en JS (último envío)</h2>
+    <p style="color:var(--muted);font-size:13px;line-height:1.6;margin:-6px 0 16px;">
+      El submit no recarga la página (<code>event.preventDefault()</code>): el mismo formulario
+      se lee con las 3 técnicas de abajo y el usuario nuevo se agrega directo al DOM.
+    </p>
+    <div class="method-grid">
+      <div class="method">
+        <span class="tag">Método 1</span>
+        <code class="title">document.getElementById(id).value</code>
+        <pre id="out-method1">Esperando el primer envío…</pre>
+      </div>
+      <div class="method">
+        <span class="tag">Método 2</span>
+        <code class="title">formulario.elements["name"].value</code>
+        <pre id="out-method2">Esperando el primer envío…</pre>
+      </div>
+      <div class="method">
+        <span class="tag">Método 3</span>
+        <code class="title">new FormData(formulario)</code>
+        <pre id="out-method3">Esperando el primer envío…</pre>
+      </div>
+    </div>
+  </div>
+
+  <div class="users-section">
+    <h2>Usuarios cargados <span class="count" id="userCount">0</span></h2>
+    <div id="usersGrid" class="users-grid"></div>
+  </div>
+
+</div>
+
+<script type="module" src="../scripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyecto 2 · Catálogo dinámico con array</title>
+<link rel="stylesheet" href="styles/main.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Proyecto 2</div>
+    <button id="toggle-theme" class="theme-toggle" aria-label="Cambiar modo">
+  <i class="fa-solid fa-sun icon-sun"></i>
+  <i class="fa-solid fa-moon icon-moon"></i>
+  </button>
+  </header>
+
+  <div class="layout">
+
+    <div class="card">
+      <h2>Nuevo producto <span>· 9 campos</span></h2>
+      <form id="productForm" novalidate>
+        <label for="nombre">Nombre del producto</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej: Pelota de fútbol N°5">
+        <div class="error" id="err-nombre">Ingresá un nombre (mínimo 3 caracteres).</div>
+
+        <div class="row2">
+          <div>
+            <label for="categoria">Categoría</label>
+            <select id="categoria" name="categoria">
+              <option value="">Elegir…</option>
+              <option value="Deporte">Deporte</option>
+              <option value="Herramienta">Herramienta</option>
+              <option value="Otro">Otro</option>
+            </select>
+            <div class="error" id="err-categoria">Elegí una categoría.</div>
+          </div>
+          <div>
+            <label for="marca">Marca</label>
+            <input type="text" id="marca" name="marca" placeholder="Ej: Topper">
+            <div class="error" id="err-marca">Ingresá una marca.</div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label for="precio">Precio (USD)</label>
+            <input type="number" id="precio" name="precio" min="0" step="0.01" placeholder="Ej: 25.50">
+            <div class="error" id="err-precio">Precio inválido.</div>
+          </div>
+          <div>
+            <label for="stock">Stock</label>
+            <input type="number" id="stock" name="stock" min="0" step="1" placeholder="Ej: 12">
+            <div class="error" id="err-stock">Stock inválido.</div>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div>
+            <label for="color">Color</label>
+            <input type="text" id="color" name="color" placeholder="Ej: Blanco">
+            <div class="error" id="err-color">Ingresá un color.</div>
+          </div>
+          <div>
+            <label for="unidad">Unidad</label>
+            <select id="unidad" name="unidad">
+              <option value="">Elegir…</option>
+              <option value="Unidad">Unidad</option>
+              <option value="Par">Par</option>
+              <option value="Caja">Caja</option>
+              <option value="Kit">Kit</option>
+            </select>
+            <div class="error" id="err-unidad">Elegí una unidad.</div>
+          </div>
+        </div>
+
+        <label for="fecha">Fecha de ingreso</label>
+        <input type="date" id="fecha" name="fecha">
+        <div class="error" id="err-fecha">Ingresá una fecha válida (no futura).</div>
+
+        <label for="descripcion">Descripción</label>
+        <textarea id="descripcion" name="descripcion" placeholder="Breve detalle del producto…"></textarea>
+        <div class="error" id="err-descripcion">Agregá una descripción (mínimo 5 caracteres).</div>
+
+        <div class="method-picker">
+          <label for="metodo">Método de almacenamiento en el array</label>
+          <select id="metodo" name="metodo">
+            <option value="push">push() — agregar al final</option>
+            <option value="unshift">unshift() — agregar al inicio</option>
+            <option value="splice">splice() — insertar en una posición</option>
+            <option value="spread">spread (...) — copia inmutable + agregado</option>
+          </select>
+          <p id="methodHint">push(producto) agrega el elemento al final del array, mutándolo.</p>
+          <div id="posicionWrap" class="campo-extra hidden">
+          <label for="posicion">Posición de inserción (0 = primero)</label>
+          <input type="number" id="posicion" name="posicion" min="0" step="1" value="0">
+          </div>
+        </div>
+
+        <button type="submit">Guardar producto</button>
+      </form>
+    </div>
+
+    <div>
+      <div class="card table-card">
+        <div class="table-head">
+          <h2 style="margin:0;">Catálogo</h2>
+          <span class="count" id="prodCount">0 productos</span>
+        </div>
+        <div id="tableWrap"></div>
+
+        <details>
+          <summary>Ver el array completo (estructura de datos real)</summary>
+          <pre id="arrayDump">[]</pre>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script type="module" src="../scripts/app.js"></script>
+</body>
+</html>

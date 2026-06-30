@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Snake World</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        let currentLevel = 1;
+        function loadLevel(n, cb) {
+            currentLevel = n;
+            const old = document.getElementById('levelMapScript');
+            if (old) old.remove();
+            const s = document.createElement('script');
+            s.id = 'levelMapScript';
+            // Niveles con mapa propio; el resto usa map.js como base
+            const maps = {
+            1: '/Scripts/map.js',
+            2: '/Scripts/map2.js',
+            3: '/Scripts/map3.js',
+            4: '/Scripts/map4.js',
+            5: '/Scripts/map5.js'};
+            s.src = maps[n] || '/Scripts/map.js';
+            if (cb) s.onload = cb;
+            document.body.appendChild(s);
+        }
+    </script>
+
+    <script src="/Scripts/config.js"></script>
+    <script src="/Scripts/visuals.js"></script>
+    <script src="/Scripts/menu.js"></script>
+    <script src="/Scripts/audio.js"></script>
+    <script src="/Scripts/collisions.js"></script>
+    <script id="levelMapScript" src="/Scripts/map.js"></script>
+    <script src="/Scripts/snake.js"></script>
+    <script src="/Scripts/main.js"></script>
+</body>
+</html>

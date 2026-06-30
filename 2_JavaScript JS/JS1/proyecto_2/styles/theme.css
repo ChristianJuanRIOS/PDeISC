@@ -1,0 +1,129 @@
+/* Transición suave en todo el sitio al cambiar de tema */
+body,
+.card,
+.method-picker,
+.empty-state,
+.del,
+details,
+input,
+select,
+textarea,
+button,
+.theme-toggle {
+    transition: background-color 0.4s ease,
+    color 0.4s ease,
+    border-color 0.4s ease;
+}
+
+/* Variables del modo oscuro: pisan las de :root (definidas en style.css)
+   cuando body tiene la clase .dark-mode */
+body.dark-mode {
+  --bg: #1c1815;
+  --panel: #242019;
+  --line: #3a332a;
+  --text: #f0ece5;
+  --muted: #a89f93;
+  --accent: #e07a45;
+  --accent-2: #4f9c70;
+  --danger: #e2685f;
+}
+
+/* Colores que en style.css estaban escritos a mano (no como variables)
+   y necesitan su propio valor para el modo oscuro */
+body.dark-mode input,
+body.dark-mode select,
+body.dark-mode textarea {
+  background: #2c261f;
+}
+
+body.dark-mode .method-picker,
+body.dark-mode tbody tr:hover,
+body.dark-mode .count,
+body.dark-mode details {
+  background: #2c261f;
+}
+
+body.dark-mode details pre {
+  color: #d8d2c6;
+}
+
+body.dark-mode .badge.Deporte {
+  background: #234231;
+  color: #7fd9a3;
+}
+
+body.dark-mode .badge.Herramienta {
+  background: #4a2e1c;
+  color: #f3a874;
+}
+
+body.dark-mode .badge.Otro {
+  background: #2e2640;
+  color: #b79ee8;
+}
+
+body.dark-mode .del:hover {
+  background: #3a2222;
+}
+
+/* ============================
+   BOTÓN DE TEMA (toggle redondo)
+   ============================ */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--panel);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle i {
+  position: absolute;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Por defecto (modo claro) se ve el sol, se oculta la luna */
+.icon-sun {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+.icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.5);
+}
+
+/* En modo oscuro se invierte */
+body.dark-mode .icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.5);
+}
+
+body.dark-mode .icon-moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Animación shake al pasar el cursor */
+.theme-toggle:hover {
+  animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+  0%   { transform: rotate(0deg); }
+  20%  { transform: rotate(-12deg); }
+  40%  { transform: rotate(10deg); }
+  60%  { transform: rotate(-8deg); }
+  80%  { transform: rotate(6deg); }
+  100% { transform: rotate(0deg); }
+}

@@ -1,0 +1,68 @@
+/* Tablet: el form pasa a ancho completo arriba de la tabla */
+@media (max-width: 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Celular grande / tablet chica */
+@media (max-width: 640px) {
+  body {
+    padding: 24px 14px 60px;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .row2 {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .table-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  /* La tabla se vuelve scrolleable horizontalmente en vez de romperse */
+  .table-card {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 480px;
+  }
+
+  .theme-toggle {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+}
+
+/* Celular chico */
+@media (max-width: 380px) {
+  .eyebrow {
+    font-size: 11px;
+  }
+
+  h1 {
+    font-size: 19px;
+  }
+
+  p.lead {
+    font-size: 13px;
+  }
+
+  button {
+    font-size: 13px;
+  }
+}

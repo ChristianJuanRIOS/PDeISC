@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyecto 3 · Almacén de Personas</title>
+  <link rel="stylesheet" href="../styles/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="eyebrow">Proyecto 3</div>
+      <h1>Almacén de Personas</h1>
+      <p class="lead">Registro completo de individuos almacenado localmente en el navegador.</p>
+      <button id="toggle-theme" class="theme-toggle" aria-label="Cambiar modo">
+        <i class="fa-solid fa-sun icon-sun"></i>
+        <i class="fa-solid fa-moon icon-moon"></i>
+      </button>
+    </header>
+
+    <!-- Contenedor de mensajes dinámicos -->
+    <div id="globalMsg" class="global-msg hidden"></div>
+
+    <div class="layout">
+      
+      <!-- COLUMNA IZQUIERDA: FORMULARIO -->
+      <div class="card">
+        <h2>Nueva persona <span>· Formulario</span></h2>
+        <form id="personForm" novalidate>
+          
+          <div class="row2">
+            <div>
+              <label for="nombre">Nombre</label>
+              <input type="text" id="nombre" placeholder="Ej: Juan">
+              <div class="error" id="err-nombre">Mínimo 2 caracteres.</div>
+            </div>
+            <div>
+              <label for="apellido">Apellido</label>
+              <input type="text" id="apellido" placeholder="Ej: Pérez">
+              <div class="error" id="err-apellido">Mínimo 2 caracteres.</div>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div>
+              <label for="edad">Edad</label>
+              <input type="number" id="edad" min="0" max="120" placeholder="Ej: 30">
+              <div class="error" id="err-edad">Ingresa una edad válida (0-120).</div>
+            </div>
+            <div>
+              <label for="fechaNac">Fecha de nacimiento</label>
+              <input type="date" id="fechaNac">
+              <div class="error" id="err-fechaNac">Fecha inválida o futura.</div>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div>
+              <label for="sexo">Sexo</label>
+              <select id="sexo">
+                <option value="">Seleccionar...</option>
+                <option value="Masculino">Masculino</option>
+                <option value="Femenino">Femenino</option>
+              </select>
+              <div class="error" id="err-sexo">Selecciona una opción.</div>
+            </div>
+            <div>
+              <label for="estadoCivil">Estado Civil</label>
+              <select id="estadoCivil">
+                <option value="">Seleccionar...</option>
+                <option value="Soltero/a">Soltero/a</option>
+                <option value="Casado/a">Casado/a</option>
+                <option value="Divorciado/a">Divorciado/a</option>
+                <option value="Viudo/a">Viudo/a</option>
+              </select>
+              <div class="error" id="err-estadoCivil">Selecciona una opción.</div>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div>
+              <label for="documento">Documento de identidad</label>
+              <input type="text" id="documento" placeholder="Ej: 12345678">
+              <div class="error" id="err-documento">Mínimo 6 caracteres numéricos.</div>
+            </div>
+            <div>
+              <label for="nacionalidad">Nacionalidad</label>
+              <input type="text" id="nacionalidad" placeholder="Ej: Argentino/a">
+              <div class="error" id="err-nacionalidad">Mínimo 3 caracteres.</div>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div>
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" placeholder="Ej: 3815551234">
+              <div class="error" id="err-telefono">Ingresa un teléfono válido.</div>
+            </div>
+            <div>
+              <label for="mail">Correo electrónico</label>
+              <input type="email" id="mail" placeholder="Ej: juan@mail.com">
+              <div class="error" id="err-mail">Ingresa un correo válido.</div>
+            </div>
+          </div>
+
+          <!-- CAMPO DINÁMICO: HIJOS -->
+          <div class="row2">
+            <div>
+              <label for="hijos">¿Tiene hijos?</label>
+              <select id="hijos">
+                <option value="No">No</option>
+                <option value="Si">Sí</option>
+              </select>
+            </div>
+            <div id="cantidadHijosWrap" class="hidden">
+              <label for="cantidadHijos">¿Cuántos?</label>
+              <input type="number" id="cantidadHijos" min="1" placeholder="Ej: 2">
+              <div class="error" id="err-cantidadHijos">Indica una cantidad válida.</div>
+            </div>
+          </div>
+
+          <label for="direccion">Dirección</label>
+          <input type="text" id="direccion" placeholder="Ej: Av. Siempre Viva 742">
+          <div class="error" id="err-direccion">Mínimo 5 caracteres.</div>
+
+          <label for="ocupacion">Ocupación</label>
+          <input type="text" id="ocupacion" placeholder="Ej: Ingeniero, Docente...">
+          <div class="error" id="err-ocupacion">Mínimo 3 caracteres.</div>
+
+          <button type="submit">Guardar Persona</button>
+        </form>
+      </div>
+
+      <!-- COLUMNA DERECHA: LISTADO -->
+      <div>
+        <div class="card list-card">
+          <div class="table-head">
+            <h2 style="margin:0;">Personas Registradas</h2>
+            <span class="count" id="personCount">0 personas</span>
+          </div>
+          <ul id="personList" class="person-list">
+            <div class="empty-state">Aún no hay personas almacenadas.</div>
+          </ul>
+          <button id="clearAll" class="del" style="margin-top: 15px; width: 100%; text-align: center;">
+            <i class="fa-solid fa-trash"></i> Limpiar todo el almacenamiento
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script type="module" src="../scripts/app.js"></script>
+</body>
+</html>

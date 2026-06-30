@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PAC-MAN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../Styles/game.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ============ PANTALLA MENÚ ============ -->
+    <div id="menu-screen" class="screen active">
+      <div class="menu-title">POC-MAN</div>
+      <div class="menu-sub">ELEMENTAL EDITION</div>
+      <div class="hi-score">HI-SCORE: <span id="mhi">0</span></div>
+      <div class="menu-ghosts">
+        <div class="mg"></div>
+        <div class="mg"></div>
+        <div class="mg"></div>
+        <div class="mg"></div>
+      </div>
+      <button class="mbtn bs" onclick="startGame()">INICIAR JUEGO</button>
+      <button class="mbtn bo" onclick="showScr('op-screen')">OPCIONES</button>
+      <button class="mbtn bp" onclick="showScr('sc-screen')">PUNTAJES</button>
+      <button class="mbtn bc" onclick="showScr('cr-screen')">CREDITOS</button>
+    </div>
+
+    <!-- ============ PANTALLA JUEGO ============ -->
+    <div id="game-screen" class="screen">
+      <div id="hud">
+        <span class="hs">PUNTOS: <span id="hscore">0</span></span>
+        <span class="hv">NIVEL: <span id="hlevel">1</span></span>
+        <span class="hl" id="hlives"></span>
+      </div>
+      <canvas id="gc" width="532" height="588"></canvas>
+      <div id="abar"></div>
+      <div id="tctrl">
+        <div class="tb tu" ontouchstart="setDir('up')" onmousedown="setDir('up')">&#9650;</div>
+        <div class="tb td" ontouchstart="setDir('down')" onmousedown="setDir('down')">&#9660;</div>
+        <div class="tb tl" ontouchstart="setDir('left')" onmousedown="setDir('left')">&#9664;</div>
+        <div class="tb tr" ontouchstart="setDir('right')" onmousedown="setDir('right')">&#9654;</div>
+      </div>
+    </div>
+
+    <!-- ============ PANTALLA GAME OVER ============ -->
+    <div id="go-screen" class="screen">
+      <div class="got">GAME OVER</div>
+      <div class="gos">PUNTOS: <span id="goscore">0</span></div>
+      <div class="goh">HI-SCORE: <span id="gohi">0</span></div>
+      <button class="mbtn bs" onclick="startGame()">REINTENTAR</button>
+      <button class="bbtn" onclick="showScr('menu-screen')">MENU</button>
+    </div>
+
+    <!-- ============ PANTALLA OPCIONES ============ -->
+    <div id="op-screen" class="screen">
+      <div class="opt">OPCIONES</div>
+      <div class="orow"><span class="olbl">DIFICULTAD:</span></div>
+      <div class="orow">
+        <button class="obtn" data-d="easy" onclick="setDiff('easy')">FACIL</button>
+        <button class="obtn ac" data-d="normal" onclick="setDiff('normal')">NORMAL</button>
+        <button class="obtn" data-d="hard" onclick="setDiff('hard')">DIFICIL</button>
+      </div>
+      <button class="bbtn" onclick="showScr('menu-screen')">VOLVER</button>
+    </div>
+
+    <!-- ============ PANTALLA CRÉDITOS ============ -->
+    <div id="cr-screen" class="screen">
+      <div class="crt">CREDITOS</div>
+      <div class="crtx">POC-MAN: ELEMENTAL EDITION<br><br>Inspirado en Namco 1980<br>Fantasmas con habilidades unicas<br><br>FANTASMAS:</div>
+      <div class="crg">
+        <div class="cri"><div class="crd" style="background:#ff4400"></div><span class="crn" style="color:#ff4400">IGNIS</span></div>
+        <div class="cri"><div class="crd" style="background:#00ccff"></div><span class="crn" style="color:#00ccff">GLACIUS</span></div>
+        <div class="cri"><div class="crd" style="background:#ffee00"></div><span class="crn" style="color:#ffee00">VOLTAR</span></div>
+        <div class="cri"><div class="crd" style="background:#44cc44"></div><span class="crn" style="color:#44cc44">TERRA</span></div>
+      </div>
+      <div class="crtx">
+        IGNIS: Rastros de fuego que queman<br>
+        GLACIUS: Congela a Pac-Man si esta cerca<br>
+        VOLTAR: Se teletransporta aleatoriamente<br>
+        TERRA: Rompe paredes temporalmente
+      </div>
+      <button class="bbtn" onclick="showScr('menu-screen')">VOLVER</button>
+    </div>
+
+    <!-- ============ PANTALLA PUNTAJES ============ -->
+    <div id="sc-screen" class="screen">
+      <div class="sct">PUNTAJES</div>
+      <div id="sclist" class="scl"></div>
+      <button class="bbtn" onclick="showScr('menu-screen')">VOLVER</button>
+    </div>
+
+    <!-- ============ OVERLAY ============ -->
+    <div id="ov">
+      <div id="ovt"></div>
+    </div>
+
+  </div>
+
+  <script src="../Scripts/game.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+.wrap {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+header {
+  margin-bottom: 26px;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+/* ============================
+   GRID DE PARES DE CAMPOS
+   ============================ */
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* ============================
+   ENCABEZADO DE LA TABLA / CATÁLOGO
+   ============================ */
+.table-card {
+  margin-top: 24px;
+}
+
+.table-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
