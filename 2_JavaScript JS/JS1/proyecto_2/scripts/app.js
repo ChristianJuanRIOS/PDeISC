@@ -1,6 +1,6 @@
 import { limpiarErrores, validar } from '../modulos/validaciones.js';
 
-let productos = []; // "let" porque el método spread reasigna la variable
+let productos = [];
 
 const form = document.getElementById('productForm');
 const tableWrap = document.getElementById('tableWrap');
@@ -13,8 +13,7 @@ const posicionWrap = document.getElementById('posicionWrap');
 const hints = {
   push:    'push(producto) agrega el elemento al final del array, mutándolo.',
   unshift: 'unshift(producto) agrega el elemento al inicio del array, mutándolo.',
-  splice:  'splice(posicion, 0, producto) inserta el elemento en la posición indicada, mutándolo.',
-  spread:  'productos = [...productos, producto] crea un array NUEVO (no muta el original), técnica típica de programación inmutable / React.'
+  splice:  'splice(posicion, 0, producto) inserta el elemento en la posición indicada, mutándolo.'
 };
 
   metodoSelect.addEventListener('change', () => {
@@ -40,7 +39,7 @@ function leerFormulario() {
   };
 }
 
-// ---------- Los 4 métodos de almacenamiento ----------
+// ---------- Los 3 métodos de almacenamiento ----------
 function guardarProducto(producto, metodo, posicion) {
   switch (metodo) {
     case 'push':
@@ -56,9 +55,6 @@ function guardarProducto(producto, metodo, posicion) {
       productos.splice(pos, 0, producto);
       break;
     }
-    case 'spread':
-      productos = [...productos, producto];
-      break;
     default:
       productos.push(producto);
   }
@@ -99,7 +95,7 @@ function render() {
   tableWrap.querySelectorAll('.del').forEach(btn => {
     btn.addEventListener('click', () => {
       const idx = Number(btn.dataset.index);
-      productos = productos.filter((_, i) => i !== idx); // otra forma inmutable de actualizar el array
+      productos = productos.filter((_, i) => i !== idx); // forma inmutable de actualizar el array
       render();
     });
   });

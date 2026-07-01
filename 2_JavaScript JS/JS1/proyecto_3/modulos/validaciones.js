@@ -9,18 +9,21 @@ export function validarSoloTexto(valor, minLongitud = 2) {
 }
 
 /**
- * Valida que una cadena contenga solo números enteros.
+ * Valida que una cadena contenga solo números enteros, dentro de un rango
+ * de longitud (cantidad de dígitos).
  * @param {string} valor 
  * @param {number} minLongitud 
+ * @param {number} maxLongitud 
  * @returns {boolean}
  */
-export function validarSoloNumeros(valor, minLongitud = 1) {
+export function validarSoloNumeros(valor, minLongitud = 1, maxLongitud = Infinity) {
   const regex = /^\d+$/;
-  return valor.length >= minLongitud && regex.test(valor);
+  return valor.length >= minLongitud && valor.length <= maxLongitud && regex.test(valor);
 }
 
 /**
- * Valida que un número esté dentro de un rango específico.
+ * Valida que un valor sea un número entero puro (sin texto pegado, ej. "30abc")
+ * y que esté dentro de un rango específico.
  * @param {string} valor 
  * @param {number} min 
  * @param {number} max 
@@ -28,8 +31,12 @@ export function validarSoloNumeros(valor, minLongitud = 1) {
  */
 export function validarRangoNumero(valor, min, max) {
   if (valor === '') return false;
-  const num = parseInt(valor);
-  return !isNaN(num) && num >= min && num <= max;
+  // /^\d+$/ exige que el string sea SOLO dígitos de punta a punta,
+  // a diferencia de parseInt() que corta en el primer carácter no numérico
+  // y aceptaría cosas como "30años" como si fuera 30.
+  if (!/^\d+$/.test(valor)) return false;
+  const num = parseInt(valor, 10);
+  return num >= min && num <= max;
 }
 
 /**
@@ -57,13 +64,15 @@ export function validarCorreo(valor) {
 }
 
 /**
- * Valida que un teléfono contenga solo números, espacios, guiones o paréntesis.
+ * Valida que un teléfono contenga solo números, espacios, guiones o paréntesis,
+ * y que tenga al menos 7 dígitos reales (no solo separadores).
  * @param {string} valor 
  * @returns {boolean}
  */
 export function validarTelefono(valor) {
-  const regex = /^[\d\s\-\(\)\+]+$/;
-  return valor.length >= 7 && regex.test(valor);
+  const regexFormato = /^[\d\s\-\(\)\+]+$/;
+  const cantidadDigitos = (valor.match(/\d/g) || []).length;
+  return valor.length >= 7 && regexFormato.test(valor) && cantidadDigitos >= 7;
 }
 
 /**
@@ -124,7 +133,9 @@ const reglasDeValidacion = {
 
   sexo: (val) => val !== '',
   estadoCivil: (val) => val !== '',
-  documento: (val) => validarSoloNumeros(val, 6),
+  // DNI argentino real: 7 u 8 dígitos. Se deja un rango 6-8 por flexibilidad
+  // con otros documentos, pero ya no acepta cadenas de longitud arbitraria.
+  documento: (val) => validarSoloNumeros(val, 6, 8),
   nacionalidad: (val) => validarSoloTexto(val, 3),
   telefono: (val) => validarTelefono(val),
   mail: (val) => validarCorreo(val),
@@ -139,11 +150,6 @@ const reglasDeValidacion = {
     return true; 
   }
 };
-
-
-// ==========================================
-// FUNCIÓN PRINCIPAL EXPORTADA
-// ==========================================
 
 /**
  * Valida un campo del formulario buscando su regla en el mapa.

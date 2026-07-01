@@ -12,42 +12,47 @@
 
 <body>
 
+    <!-- Aplica el tema guardado ANTES de pintar nada, para evitar el flash -->
+    <script>
+        if (localStorage.getItem('tema') === 'oscuro') {
+            document.body.classList.add('oscuro');
+        }
+    </script>
+
     <header class="text-center p-4">
         <h1><i class="fa-solid fa-newspaper"></i> DIARIO DIGITAL 2026</h1>
         <p id="fecha"></p>
     </header>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-dark fixed-top">
-        <div class="container">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+    <!-- NAVBAR (botón flotante) -->
+    <nav class="navbar navbar-dark">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="collapse navbar-collapse mt-2" id="menu">
-                <ul class="navbar-nav text-center mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="filtrar('todas'); return false;">
-                            <i class="fa-solid fa-house"></i> Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="filtrar('tecnologia'); return false;">
-                            <i class="fa-solid fa-microchip"></i> Tecnología
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="filtrar('deportes'); return false;">
-                            <i class="fa-solid fa-trophy"></i> Deportes
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" onclick="filtrar('mundo'); return false;">
-                            <i class="fa-solid fa-globe"></i> Mundo
-                        </a>
-                    </li>
-                </ul>
-            </div>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="filtrar('todas'); return false;">
+                        <i class="fa-solid fa-house"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="filtrar('tecnologia'); return false;">
+                        <i class="fa-solid fa-microchip"></i> Tecnología
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="filtrar('deportes'); return false;">
+                        <i class="fa-solid fa-trophy"></i> Deportes
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" onclick="filtrar('mundo'); return false;">
+                        <i class="fa-solid fa-globe"></i> Mundo
+                    </a>
+                </li>
+            </ul>
         </div>
     </nav>
 
@@ -56,9 +61,15 @@
     </main>
 
     <footer class="text-center p-4 mt-4">
-        <p><i class="fa-solid fa-newspaper"></i> © 2026 Diario Digital — Todos los derechos reservados</p>
+        <p>2026 Diario Digital</p>
 
     </footer>
+
+    <!-- Lightbox para ampliar imágenes -->
+    <div id="lightbox" class="lightbox">
+        <span id="lightboxCerrar" class="lightbox-cerrar">&times;</span>
+        <img id="lightboxImg" src="" alt="">
+    </div>
 
     <!-- Botón flotante modo oscuro -->
     <button id="btnOscuro" onclick="modoOscuro()" title="Alternar modo oscuro" style="position:fixed; bottom:30px; right:30px; z-index:99999; width:52px; height:52px; border-radius:50%; border:none; background:#1a1a2e; color:#f1c40f; font-size:1.2rem; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 18px rgba(0,0,0,0.4);">
@@ -66,7 +77,6 @@
     </button>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Noticias: debe ir antes que diario.js -->
     <script src="../Scripts/noticias.js"></script>
     <script src="../Scripts/diario.js"></script>
 </body>

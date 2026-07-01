@@ -1,6 +1,3 @@
-/* ===== MAIN.CSS ===== */
-/* Punto de entrada: importa todos los archivos CSS del proyecto */
-
 @import url('base.css');
 @import url('layout.css');
-@import url('components.css');
+@import url('componentes.css');

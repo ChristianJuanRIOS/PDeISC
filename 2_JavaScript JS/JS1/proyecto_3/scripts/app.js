@@ -1,4 +1,3 @@
-// Importamos la función de validaciones
 import { validarCampo } from '../modulos/validaciones.js';
 
 // --- ELEMENTOS DEL DOM ---
@@ -20,8 +19,15 @@ const fechaNacInput = document.getElementById('fechaNac');
 // Tema
 const toggleTheme = document.getElementById('toggle-theme');
 
-// --- ESTADO ---
-let personas = JSON.parse(localStorage.getItem('almacen_personas')) || [];
+// Se envuelve en try/catch: si el localStorage tuviera datos corruptos
+// (editados a mano, formato viejo, etc.), JSON.parse tiraría una excepción
+// no controlada y rompería la carga de toda la página.
+let personas = [];
+try {
+  personas = JSON.parse(localStorage.getItem('almacen_personas')) || [];
+} catch {
+  personas = [];
+}
 
 // --- FUNCIONES AUXILIARES ---
 
@@ -72,14 +78,13 @@ inputs.forEach(input => {
     if (input.classList.contains('invalid')) {
       validarCampo(input, obtenerDependencias());
     }
-    
-    // ✨ LÓGICA DE VALIDACIÓN CRUZADA EN TIEMPO REAL
+
     // Si modifico la edad, re-valido la fecha para que se quite el rojo si ahora coinciden
-    if (input.id === 'edad') {
+    if (input.id === 'edad' && fechaNacInput.value !== '') {
       validarCampo(fechaNacInput, obtenerDependencias());
     }
     // Si modifico la fecha, re-valido la edad
-    if (input.id === 'fechaNac') {
+    if (input.id === 'fechaNac' && edadInput.value !== '') {
       validarCampo(edadInput, obtenerDependencias());
     }
   });

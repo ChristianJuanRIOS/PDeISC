@@ -2,10 +2,10 @@
 body {
     font-family: 'Georgia', serif;
     margin: 0;
-    padding-top: 70px; /* espacio para navbar fija */
     background: #f0f2f5;
     color: #1a1a2e;
-    transition: background 0.4s ease, color 0.4s ease;
+    transition: background 0.7s cubic-bezier(0.4, 0, 0.2, 1),
+                color 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== MODO OSCURO - BASE ===== */

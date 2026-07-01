@@ -28,46 +28,65 @@ header h1 i {
     text-transform: capitalize;
 }
 
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR (botón flotante, no ocupa espacio en el layout) ===== */
 nav.navbar {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+    top: 20px;
+    left: 20px;
+    width: auto;
 
     z-index: 5000;
 
-    background: #0f3460 !important;
-    border-bottom: 2px solid #e94560;
-    padding: 10px 16px;
+    background: transparent !important;
+    border: none;
+    padding: 0;
 
-    box-shadow: 0 2px 10px rgba(0,0,0,.15);
-    backdrop-filter: blur(10px);
+    box-shadow: none;
+    backdrop-filter: none;
 }
 
 nav .navbar-toggler {
     border: 2px solid #e94560 !important;
-    background: #e94560 !important;
-    border-radius: 8px;
-    padding: 6px 14px;
-    box-shadow: none !important;
+    background: #0f3460 !important;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .35) !important;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+nav .navbar-toggler:hover {
+    transform: scale(1.08);
 }
 
 nav .navbar-toggler:focus {
-    box-shadow: none !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .35) !important;
 }
 
 nav .navbar-toggler-icon {
+    width: 20px;
+    height: 20px;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
-/* Menú desplegable */
+/* Menú desplegable: ventanita flotante anclada bajo el botón */
 .navbar-collapse {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: max-content;
+    min-width: 190px;
+    max-width: 240px;
+
     background: white;
     border-radius: 12px;
-    padding: 12px;
-    margin-top: 10px;
-    box-shadow: 0 8px 25px rgba(0,0,0,.2);
+    padding: 8px;
+
+    box-shadow: 0 14px 34px rgba(0, 0, 0, .3);
 }
 
 body.oscuro .navbar-collapse {
@@ -75,11 +94,12 @@ body.oscuro .navbar-collapse {
 }
 
 nav .nav-link {
+    display: block;
     color: #1e293b !important;
     font-family: Arial, sans-serif;
     font-weight: 700;
     letter-spacing: 0.5px;
-    padding: 10px 18px !important;
+    padding: 10px 14px !important;
     border-radius: 8px;
     transition: all .2s ease;
     font-size: 1rem;
@@ -94,6 +114,8 @@ nav .nav-link.active {
 
 nav .nav-link i {
     margin-right: 6px;
+    width: 18px;
+    text-align: center;
 }
 
 body.oscuro nav .nav-link {
@@ -102,8 +124,15 @@ body.oscuro nav .nav-link {
 
 /* ===== MAIN ===== */
 main.container {
-    max-width: 860px;
+    max-width: 1600px;
+    padding-left: 32px;
+    padding-right: 32px;
     padding-bottom: 40px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    row-gap: 8px;
 }
 
 /* ===== FOOTER ===== */
@@ -137,10 +166,6 @@ footer {
 body.oscuro header {
     background: linear-gradient(135deg, #05050f 0%, #0d0d1a 100%);
     border-bottom-color: #e94560;
-}
-
-body.oscuro nav.navbar {
-    background: #050510 !important;
 }
 
 body.oscuro footer {
